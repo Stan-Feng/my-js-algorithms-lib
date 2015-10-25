@@ -14,14 +14,14 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         LinkedList.should.be.a('function');
     });
 
-    it('the constructor should create a brand new LinkedList object', () =>{
+    it('the constructor should create a brand new LinkedList object: \n', () =>{
       var l1 = new LinkedList();
       var l2 = new LinkedList();
 
       l1.should.be.an('object');
       l2.should.be.an('object');
 
-      var comparasion = (l1 === l2); //TODO: Continue......
+      var comparasion = (l1 === l2);
       comparasion.should.be.a('boolean');
       comparasion.should.equal(false);
     });
@@ -33,13 +33,13 @@ describe.only('DataStructure -- LinkedList: \n', () => {
     describe('LinkedList -- should have: \n', () => {
       var linkedlist = new LinkedList();
 
-      it('should have append() method', () => {
+      it('should have append() method: \n', () => {
         var append = linkedlist.append;
         append.should.be.exist;
         append.should.be.a('function');
       });
 
-      it('should have removeAt() method', () => {
+      it('should have removeAt() method: \n', () => {
         var removeAt = linkedlist.removeAt;
         removeAt.should.be.exist;
         removeAt.should.be.a('function');
@@ -48,17 +48,17 @@ describe.only('DataStructure -- LinkedList: \n', () => {
     });
 
 
-    describe('LinkedList -- append method', () => {
+    describe('LinkedList -- append method: \n', () => {
       var linkedlist = new LinkedList();
 
-      it('should add element to the list', () => {
+      it('should add element to the list: \n', () => {
         linkedlist.append(12);
         var result = linkedlist.testMethod().length;
         result.should.be.a('number');
         result.should.equal(1);
       });
 
-      it('should add the element to the end of list', () =>{
+      it('should add the element to the end of list: \n', () =>{
         linkedlist.append(23);
         var result = linkedlist.testMethod().head.next.element;
         result.should.be.a('number');
@@ -68,23 +68,32 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
     });
 
-    describe('LinkedList -- removeAt method', () => {
-      var linkedlist = new LinkedList();
-      linkedlist.append(11);
-      linkedlist.append(12);
+    describe('LinkedList -- removeAt method: \n', () => {
 
-      it('should check whether input is valid', () => {
+
+      it('should check whether input is valid: \n', () => {
+        var linkedlist = new LinkedList();
+        linkedlist.append(11);
+        linkedlist.append(12);
+
         var invalidInput1 = -1;
         var invalidInput2 = 3;
+        var invalidInput3 = 2;
 
         var result1 = linkedlist.removeAt(invalidInput1);
         var result2 = linkedlist.removeAt(invalidInput2);
+        var result3 = linkedlist.removeAt(invalidInput3);
 
         result1.should.be.an('error');
         result2.should.be.an('error');
+        result3.should.be.an('error');
       });
 
-      it('should return the first element, when input position is 0', () => {
+      it('should return the first element, when input position is 0: \n', () => {
+        var linkedlist = new LinkedList();
+        linkedlist.append(11);
+        linkedlist.append(12);
+
         var node = linkedlist.removeAt(0);
         node.should.be.an('object');
         node.should.have.property('element');
@@ -104,7 +113,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         count.should.equal(length);
       });
 
-      it('should return the specified element and remove it', () => {
+      it('should return the specified element and remove it: \n', () => {
         var linkedlist = new LinkedList();
         linkedlist.append(12);
         linkedlist.append(13);
@@ -132,8 +141,41 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         isLengthCorrect.should.be.true;
         isLengthCorrect.should.equal(true);
 
+        var head = linkedlist.testMethod().head;
+        head.should.be.an('object');
+        head.element.should.be.a('number');
+        head.element.should.equal(12);
+        head.next.element.should.equal(13);
+        head.next.next.element.should.equal(15);
       });
 
+      it('should remove the last item correctly', () => {
+        var linkedlist = new LinkedList();
+        linkedlist.append(1);
+        linkedlist.append(2);
+        linkedlist.append(3);
+        linkedlist.append(4);
+        linkedlist.append(5);
+
+        var node = linkedlist.removeAt(4);
+        node.should.be.an('object');
+        node.should.have.property('element');
+        node.should.have.property('next');
+
+        node.element.should.be.a('number');
+        node.element.should.equal(5);
+
+        var head = linkedlist.testMethod().head;
+        head.should.be.an('object');
+        head.element.should.be.a('number');
+        head.element.should.equal(1);
+        head.next.element.should.equal(2);
+        head.next.next.element.should.equal(3);
+        head.next.next.next.element.should.equal(4);
+
+      });
+
+      //TODO: Continue...
 
 
 

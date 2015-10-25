@@ -48,7 +48,7 @@ function LinkedList() {
 	};
 
   this.removeAt = (position) => {
-    if( position < 0 || position > _length) {
+    if( position < 0 || position >= _length) {
       return new Error('Invalid Input..');
     }
 
