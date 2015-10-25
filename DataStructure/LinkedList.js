@@ -48,29 +48,31 @@ function LinkedList() {
 	};
 
   this.removeAt = (position) => {
-    if( position < 1 || position > _length) {
+    if( position < 0 || position > _length) {
       return new Error('Invalid Input..');
     }
 
-    let current = head;
-    let previous = head;
+    let current = _head;
+    let previous = _head;
     let index = 0;
+    let returnNode;
 
     if (position === 0){
-      let returnNode = Object.create(head);
-      head = current.next;
+      returnNode = Object.create(_head);
+      _head = current.next;
       current = current.next;
+      _length--;
       return returnNode;
     }
 
-    while(index <= position){
+    while(index < position){
       index++;
       previous = current;
       current = current.next;
     }
-
-
-
+    previous.next = current.next;
+    _length--;
+    return Object.create(current);
 
   };
 

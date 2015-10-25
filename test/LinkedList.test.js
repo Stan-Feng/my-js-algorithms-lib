@@ -70,7 +70,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
     describe('LinkedList -- removeAt method', () => {
       var linkedlist = new LinkedList();
-      linkedlist.append(12);
+      linkedlist.append(11);
       linkedlist.append(12);
 
       it('should check whether input is valid', () => {
@@ -85,8 +85,56 @@ describe.only('DataStructure -- LinkedList: \n', () => {
       });
 
       it('should return the first element, when input position is 0', () => {
-        
+        var node = linkedlist.removeAt(0);
+        node.should.be.an('object');
+        node.should.have.property('element');
+        node.should.have.property('next');
+        node.element.should.equal(11);
+
+        var length = linkedlist.testMethod().length;
+        length.should.be.a('number');
+        length.should.equal(1);
+
+        var count = 0;
+        var head = linkedlist.testMethod().head;
+        var length = linkedlist.testMethod().length - 1;
+        while(head.next){
+          count++;
+        }
+        count.should.equal(length);
       });
+
+      it('should return the specified element and remove it', () => {
+        var linkedlist = new LinkedList();
+        linkedlist.append(12);
+        linkedlist.append(13);
+        linkedlist.append(14);
+        linkedlist.append(15);
+
+        var node = linkedlist.removeAt(2);
+        node.should.be.an('object');
+        node.should.have.property('element');
+        node.should.have.property('next');
+
+        var element = node.element;
+        element.should.be.a('number');
+        element.should.equal(14);
+
+        var head = linkedlist.testMethod().head;
+        var length = linkedlist.testMethod().length;
+        var count = 0;
+        while(head.next){
+          head = head.next;
+          count++;
+        }
+        var isLengthCorrect = (count + 1 === length);
+        isLengthCorrect.should.be.a('boolean');
+        isLengthCorrect.should.be.true;
+        isLengthCorrect.should.equal(true);
+
+      });
+
+
 
 
     });
