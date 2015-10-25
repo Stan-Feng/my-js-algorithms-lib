@@ -1,6 +1,7 @@
 //Date: Thu Oct 15 2015 15:24:53 GMT+0800 (CST)
 'use strict';
 const should = require('chai').should();
+const expect = require('chai').expect;
 const listPath = '../DataStructure/LinkedList';
 var LinkedList = require(listPath);
 
@@ -172,7 +173,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         head.next.element.should.equal(2);
         head.next.next.element.should.equal(3);
         head.next.next.next.element.should.equal(4);
-
+        expect(head.next.next.next.next).be.a('null');
       });
 
       //TODO: Continue...
