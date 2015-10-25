@@ -1,0 +1,31 @@
+{
+  "name": "js-algorithms",
+  "version": "0.1.0",
+  "description": "Datastructure && Algorithms written in JavaScript",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^3.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stan-Feng/my-js-algorithms-lib.git"
+  },
+  "keywords": [
+    "DataStructure",
+    "Algorithms",
+    "Test"
+  ],
+  "author": "Stan Feng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stan-Feng/my-js-algorithms-lib/issues"
+  },
+  "homepage": "https://github.com/Stan-Feng/my-js-algorithms-lib#readme"
+}
