@@ -25,7 +25,7 @@ function Queue(data){
         items.push(item);
     };
     this.dequeue = function(){
-        return itemes.length ? items.shift() : null;
+        return items.length ? items.shift() : null;
     };
 
     //Additinal help methods

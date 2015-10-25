@@ -1,10 +1,10 @@
 //Date: Thu Oct 15 2015 15:24:53 GMT+0800 (CST)
 'use strict';
 var should = require('chai').should();
-var listPath = '../LinkedList';
+var listPath = '../DataStructure/LinkedList';
 
 
-describe('DataStructure -- LinkedList: \n', function () {
+describe.only('DataStructure -- LinkedList: \n', function () {
 
   describe('LinkedList -- Export: \n', function(){
     var LinkedList = require(listPath);
@@ -22,9 +22,8 @@ describe('DataStructure -- LinkedList: \n', function () {
       l2.should.be.an('object');
 
       var comparasion = (l1 === l2); //TODO: Continue......
-      comparasion.should.be('boolean');
-      comparasion.should.be.false;
-      comparasion.shoudl.equal(false);
+      comparasion.should.be.a('boolean');
+      comparasion.should.equal(false);
     });
 
   });

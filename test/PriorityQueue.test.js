@@ -1,8 +1,8 @@
 // Date: Thu Oct 15 2015 10:39:33 GMT+0800 (CST)
 'use strict';
 var expect = require('chai').expect;
-var queuePath = '../using/priorityQueue';
-var should = require('chai').should();
+var queuePath = '../DataStructure/using/priorityQueue';
+require('chai').should();
 
 
 describe('PriorityQueue -- Module: : \n', function () {

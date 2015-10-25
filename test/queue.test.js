@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var queuePath = '../Queue';
+var queuePath = '../DataStructure/Queue';
 
 describe('Queue -- Module', function(){
     it('should export a brand new object \n', function(){
@@ -24,15 +24,15 @@ describe('Queue -- Properties \n', function(){
 
 describe('Queue -- Methods', function(){
     var Queue = require(queuePath)();
-    
-    
+
+
 
     describe('It should have all queue methods \n', function(){
         it('should have enqueue method', function(){
             expect(Queue.enqueue).to.exist;
             expect(Queue.enqueue).to.be.a('function');
         });
-        
+
         it('should have dequeue method', function(){
             expect(Queue.dequeue ).to.exist;
             expect(Queue.dequeue ).to.be.a('function');
