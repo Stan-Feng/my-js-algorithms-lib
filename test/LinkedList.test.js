@@ -193,7 +193,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
     //TODO: Continue...
     describe('LinkedList -- insert() method: \n', () =>{
 
-      it('should check input is valid', () => {
+      it('should check input is valid \n', () => {
         var linkedlist = new LinkedList();
         var insert = linkedlist.insert;
 
@@ -211,7 +211,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         invalidResult2.should.be.an('error');
       });
 
-      it('should insert element directly when list is empty', () => {
+      it('should insert element directly when list is empty \n', () => {
         var linkedlist = new LinkedList();
         var insert = linkedlist.insert;
 
@@ -232,7 +232,27 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         head.element.should.equal(12);
       });
 
+      it('should insert 0 position correctly \n', () => {
+        var linkedlist = new LinkedList();
+        var insert = linkedlist.insert;
 
+        linkedlist.append(13);
+        var result = insert(0, 12);
+        result.should.be.a('boolean');
+        result.should.be.true;
+        result.should.equal(true);
+
+        var head = linkedlist.testMethod().head;
+        var length = linkedlist.testMethod().length;
+
+        head.should.be.an('object');
+        head.should.have.property('element');
+        head.should.have.property('next');
+        head.element.should.equal(12);
+        head.next.should.be.an('object');
+        head.next.element.should.equal(13);
+
+      });
 
     });
 
@@ -240,3 +260,12 @@ describe.only('DataStructure -- LinkedList: \n', () => {
   });
 
 });
+
+
+function printAllElement(linkedlist){
+  var head = linkedlist.testMethod().head;
+  while(head){
+    console.log(head);
+    head = head.next;
+  }
+}

@@ -90,21 +90,35 @@ function LinkedList() {
 			return new Error('invalid input...');
 		}
 
-		var node = new _Node(element);
+		var insertNode = new _Node(element);
 
-		if (_length === 0){
-			_head = node;
+		//When the list is empty
+		if (_head === null){
+			_head = insertNode;
 			_length++;
 			return true;
 		}
 
+		//When the insert position is 0
+		if (_head !== null && position === 0){
+			insertNode.next = _head;
+			_head = insertNode;
+			return true;
+		}
 		var previous = _head;
 		var current = _head.next;
 
+		//After this loop, previous pointer will point the positoin where to insert
 		for (var i = 0; i < position; i++) {
 			previous = previous.next;
-			current = current ? current.next : null;
+			current =  current ? current.next : current;
 		}
+		//Actually, what insert() do is changing the pointer previous.next --> current
+		// to previous.next --> inserNode, inserNode.next --> current
+		insertNode.next = _head;
+		_head = inserNode;
+
+
 
 		return true;
 	};
