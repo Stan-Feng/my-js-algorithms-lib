@@ -89,6 +89,23 @@ function LinkedList() {
 		if(position < 0 || position > _length){
 			return new Error('invalid input...');
 		}
+
+		var node = new _Node(element);
+
+		if (_length === 0){
+			_head = node;
+			_length++;
+			return true;
+		}
+
+		var previous = _head;
+		var current = _head.next;
+
+		for (var i = 0; i < position; i++) {
+			previous = previous.next;
+			current = current ? current.next : null;
+		}
+
 		return true;
 	};
 

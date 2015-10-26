@@ -211,6 +211,27 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         invalidResult2.should.be.an('error');
       });
 
+      it('should insert element directly when list is empty', () => {
+        var linkedlist = new LinkedList();
+        var insert = linkedlist.insert;
+
+        var result = insert(0, 12);
+        result.should.be.a('boolean');
+        result.should.be.true;
+        result.should.equal(true);
+
+        var length = linkedlist.testMethod().length;
+        length.should.equal(1);
+
+        var head = linkedlist.testMethod().head;
+        head.should.be.an('object');
+        head.should.have.property('next');
+        head.should.have.property('element');
+
+        expect(head.next).to.be.a('null');
+        head.element.should.equal(12);
+      });
+
 
 
     });
