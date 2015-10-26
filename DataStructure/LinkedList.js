@@ -103,22 +103,22 @@ function LinkedList() {
 		if (_head !== null && position === 0){
 			insertNode.next = _head;
 			_head = insertNode;
+			_length++;
 			return true;
 		}
-		var previous = _head;
-		var current = _head.next;
 
+		var insertPreviousPosition = _head;
+		var insertNextPosition = _head.next;
 		//After this loop, previous pointer will point the positoin where to insert
-		for (var i = 0; i < position; i++) {
-			previous = previous.next;
-			current =  current ? current.next : current;
+		for (var i = 0; i < position - 1; i++) {
+			insertPreviousPosition = insertPreviousPosition.next;
+			insertNextPosition = insertNextPosition.next;
 		}
 		//Actually, what insert() do is changing the pointer previous.next --> current
-		// to previous.next --> inserNode, inserNode.next --> current
-		insertNode.next = _head;
-		_head = inserNode;
-
-
+		// to previous.next --> insertNode, insertNode.next --> current
+		insertPreviousPosition.next = insertNode;
+		insertNode.next = insertNextPosition;
+		_length++;
 
 		return true;
 	};

@@ -254,6 +254,54 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
       });
 
+      it('should insert other position correctly \n', () => {
+        var linkedlist = new LinkedList();
+        var insert = linkedlist.insert;
+
+        linkedlist.append(12);
+        linkedlist.append(14);
+
+        var result = insert(1, 13);
+        result.should.be.a('boolean');
+        result.should.equal(true);
+
+        var head = linkedlist.testMethod().head;
+        var length = linkedlist.testMethod().length;
+        length.should.equal(3);
+
+        head.next.element.should.equal(13);
+        head.next.next.should.be.an('object');
+        head.next.next.element.should.equal(14);
+
+        var result = linkedlist.insert(2, 100);
+        result.should.equal(true);
+
+        head.next.element.should.equal(13);
+        head.next.next.element.should.equal(100);
+
+      });
+
+      it('should insert the last position correctly', () => {
+        var linkedlist = new LinkedList();
+        var insert = linkedlist.insert;
+
+        linkedlist.append(12);
+        linkedlist.append(13);
+        linkedlist.append(15);
+
+        var result = insert(2, 14);
+        result.should.be.a('boolean');
+        result.should.equal(true);
+
+        var head = linkedlist.testMethod().head;
+        var length = linkedlist.testMethod().length;
+
+        length.should.equal(4);
+        head.next.next.should.be.an('object');
+        head.next.next.element.should.equal(14);
+
+      });
+
     });
 
 
