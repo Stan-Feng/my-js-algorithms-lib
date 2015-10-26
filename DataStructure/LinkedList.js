@@ -47,6 +47,10 @@ function LinkedList() {
     _length++;
 	};
 
+	/**
+	 * @param: {Integer : position}
+	 * @return: {Object}, removed object
+	 */
   this.removeAt = (position) => {
     if( position < 0 || position >= _length) {
       return new Error('Invalid Input..');
@@ -75,6 +79,18 @@ function LinkedList() {
     return Object.create(current);
 
   };
+
+	/**
+	 * @param: {Integer : position}
+	 * @param: {Gneric: element}
+	 * @return: {boolean}, whether successed or failed
+	 */
+	this.insert = (position, element) => {
+		if(position < 0 || position > _length){
+			return new Error('invalid input...');
+		}
+		return true;
+	};
 
 
 
