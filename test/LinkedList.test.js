@@ -53,6 +53,12 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         insert.should.be.a('function');
       });
 
+      it('should have toString() method \n', () => {
+        var toString = linkedlist.toString;
+        toString.should.be.exist;
+        toString.should.be.a('function');
+      });
+
     });
 
 
@@ -190,7 +196,6 @@ describe.only('DataStructure -- LinkedList: \n', () => {
     });
 
 
-    //TODO: Continue...
     describe('LinkedList -- insert() method: \n', () =>{
 
       it('should check input is valid \n', () => {
@@ -281,7 +286,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
       });
 
-      it('should insert the last position correctly', () => {
+      it('should insert the last position correctly \n', () => {
         var linkedlist = new LinkedList();
         var insert = linkedlist.insert;
 
@@ -304,7 +309,31 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
     });
 
+    //TODO: Continue...
+    describe('LinkedList -- toString() method: \n', () => {
 
+      it('should return empty string while the list is empty \n', () => {
+          var linkedlist = new LinkedList();
+          var result = linkedlist.toString();
+
+          result.should.be.a('string');
+          result.should.equal('');
+      });
+
+      it('should return toString at correctly format \n', () => {
+          var linkedlist = new LinkedList();
+          linkedlist.append(1);
+          linkedlist.append(2);
+          linkedlist.append(3);
+
+          var result = linkedlist.toString();
+
+          result.should.be.a('string');
+          result.should.equal('123');
+
+      });
+
+    });
   });
 
 });

@@ -100,7 +100,7 @@ function LinkedList() {
 		}
 
 		//When the insert position is 0
-		if (_head !== null && position === 0){
+		if (position === 0){
 			insertNode.next = _head;
 			_head = insertNode;
 			_length++;
@@ -109,7 +109,7 @@ function LinkedList() {
 
 		var insertPreviousPosition = _head;
 		var insertNextPosition = _head.next;
-		//After this loop, previous pointer will point the positoin where to insert
+
 		for (var i = 0; i < position - 1; i++) {
 			insertPreviousPosition = insertPreviousPosition.next;
 			insertNextPosition = insertNextPosition.next;
@@ -124,6 +124,16 @@ function LinkedList() {
 	};
 
 
+ 	this.toString = () => {
+		var current = _head;
+		var string = '';
+
+		while(current){
+			string += current.element;
+			current = current.next;
+		}
+		return string;
+	};
 
 
 
