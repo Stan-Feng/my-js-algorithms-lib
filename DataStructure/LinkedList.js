@@ -168,16 +168,18 @@ function LinkedList() {
 		 return index >= 0 ? this.removeAt(index).element : index;
 	 };
 
-	 
 
+	this.isEmpty = () => {
+		return _length === 0;
+	};
 
+	this.size = () => {
+		return _length;
+	};
 
-
-
-
-
-
-
+	this.getHead = () => {
+		return _head;
+	};
 
   //Only used in test
   this.testMethod = () => {
