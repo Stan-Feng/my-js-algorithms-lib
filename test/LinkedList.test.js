@@ -59,6 +59,11 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         toString.should.be.a('function');
       });
 
+      it('should have indexOf() method \n', () => {
+        var indexOf = linkedlist.indexOf;
+        indexOf.should.be.exist;
+        indexOf.should.be.a('function');
+      });
     });
 
 
@@ -81,6 +86,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
       });
 
     });
+
 
     describe('LinkedList -- removeAt method \n', () => {
 
@@ -309,7 +315,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
     });
 
-    //TODO: Continue...
+
     describe('LinkedList -- toString() method: \n', () => {
 
       it('should return empty string while the list is empty \n', () => {
@@ -334,6 +340,53 @@ describe.only('DataStructure -- LinkedList: \n', () => {
       });
 
     });
+
+
+    describe('LinkedList -- indexOf() method: \n', () => {
+
+      it('should return error when the list is empty \n', () =>{
+        var linkedlist = new LinkedList();
+        var indexOf = linkedlist.indexOf;
+        var result = indexOf(12);
+        result.should.be.a('error');
+      });
+
+      it('should return correct index \n', () => {
+        var linkedlist = new LinkedList();
+        var indexOf = linkedlist.indexOf;
+
+        linkedlist.append(1);
+        linkedlist.append(2);
+        linkedlist.append(3);
+
+        var result1 = linkedlist.indexOf(3);
+        result1.should.equal(2);
+
+        var result2 = linkedlist.indexOf(2);
+        result2.should.equal(1);
+
+
+        var result3 = linkedlist.indexOf(1);
+        result3.should.equal(0);
+
+      });
+
+      it('should return -1 when the input element is not exist \n', () => {
+        var linkedlist = new LinkedList();
+        var indexOf = linkedlist.indexOf;
+
+        linkedlist.append(1);
+        linkedlist.append(2);
+        linkedlist.append(3);
+
+        var result = linkedlist.indexOf(4);
+        result.should.equal(-1);
+      });
+
+    });
+
+
+
   });
 
 });

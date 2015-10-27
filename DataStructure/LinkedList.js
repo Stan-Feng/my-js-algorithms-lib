@@ -136,6 +136,30 @@ function LinkedList() {
 	};
 
 
+	/**
+	 * @param: {element}
+	 * @return: index of searched element or -1 expressed NOT Found
+	 */
+	this.indexOf = (element) => {
+		if(_head === null){
+			return new Error('Empty List...');
+		}
+
+		var current = _head;
+		var index = 0;
+
+		while(current){
+			if(element === current.element) {
+				return index;
+			}
+			index++;
+			current = current.next;
+		}
+		return -1;
+	};
+
+
+
 
 
 
