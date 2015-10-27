@@ -181,10 +181,6 @@ function LinkedList() {
 		return _head;
 	};
 
-  //Only used in test
-  this.testMethod = () => {
-    return { length : _length, head : _head};
-  };
 }
 
 module.exports = LinkedList;

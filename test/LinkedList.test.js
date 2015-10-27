@@ -78,14 +78,14 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
       it('should add element to the list \n', () => {
         linkedlist.append(12);
-        var result = linkedlist.testMethod().length;
+        var result = linkedlist.size();
         result.should.be.a('number');
         result.should.equal(1);
       });
 
       it('should add the element to the end of list \n', () =>{
         linkedlist.append(23);
-        var result = linkedlist.testMethod().head.next.element;
+        var result = linkedlist.getHead().next.element;
         result.should.be.a('number');
         result.should.not.equal(13);
         result.should.equal(23);
@@ -126,13 +126,13 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         node.should.have.property('next');
         node.element.should.equal(11);
 
-        var length = linkedlist.testMethod().length;
+        var length = linkedlist.size();
         length.should.be.a('number');
         length.should.equal(1);
 
         var count = 0;
-        var head = linkedlist.testMethod().head;
-        var length = linkedlist.testMethod().length - 1;
+        var head = linkedlist.getHead();
+        var length = linkedlist.size()- 1;
         while(head.next){
           count++;
         }
@@ -155,8 +155,8 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         element.should.be.a('number');
         element.should.equal(14);
 
-        var head = linkedlist.testMethod().head;
-        var length = linkedlist.testMethod().length;
+        var head = linkedlist.getHead();
+        var length = linkedlist.size();
         var count = 0;
         while(head.next){
           head = head.next;
@@ -167,7 +167,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         isLengthCorrect.should.be.true;
         isLengthCorrect.should.equal(true);
 
-        var head = linkedlist.testMethod().head;
+        var head = linkedlist.getHead();
         head.should.be.an('object');
         head.element.should.be.a('number');
         head.element.should.equal(12);
@@ -191,7 +191,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         node.element.should.be.a('number');
         node.element.should.equal(5);
 
-        var head = linkedlist.testMethod().head;
+        var head = linkedlist.getHead();
         head.should.be.an('object');
         head.element.should.be.a('number');
         head.element.should.equal(1);
@@ -200,7 +200,7 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         head.next.next.next.element.should.equal(4);
         expect(head.next.next.next.next).be.a('null');
 
-        var length = linkedlist.testMethod().length;
+        var length = linkedlist.size();
         length.should.be.a('number');
         length.should.equal(4);
       });
@@ -237,10 +237,10 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         result.should.be.true;
         result.should.equal(true);
 
-        var length = linkedlist.testMethod().length;
+        var length = linkedlist.size();
         length.should.equal(1);
 
-        var head = linkedlist.testMethod().head;
+        var head = linkedlist.getHead();
         head.should.be.an('object');
         head.should.have.property('next');
         head.should.have.property('element');
@@ -259,8 +259,8 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         result.should.be.true;
         result.should.equal(true);
 
-        var head = linkedlist.testMethod().head;
-        var length = linkedlist.testMethod().length;
+        var head = linkedlist.getHead();
+        var length = linkedlist.size();
 
         head.should.be.an('object');
         head.should.have.property('element');
@@ -282,8 +282,8 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         result.should.be.a('boolean');
         result.should.equal(true);
 
-        var head = linkedlist.testMethod().head;
-        var length = linkedlist.testMethod().length;
+        var head = linkedlist.getHead();
+        var length = linkedlist.size();
         length.should.equal(3);
 
         head.next.element.should.equal(13);
@@ -310,8 +310,8 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         result.should.be.a('boolean');
         result.should.equal(true);
 
-        var head = linkedlist.testMethod().head;
-        var length = linkedlist.testMethod().length;
+        var head = linkedlist.getHead();
+        var length = linkedlist.size();
 
         length.should.equal(4);
         head.next.next.should.be.an('object');
@@ -429,12 +429,3 @@ describe.only('DataStructure -- LinkedList: \n', () => {
   });
 
 });
-
-
-function printAllElement(linkedlist){
-  var head = linkedlist.testMethod().head;
-  while(head){
-    console.log(head);
-    head = head.next;
-  }
-}
