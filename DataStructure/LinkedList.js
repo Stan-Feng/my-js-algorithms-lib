@@ -159,6 +159,18 @@ function LinkedList() {
 	};
 
 
+	/**
+	 * @param: {Generic Object} element
+	 * @return: {boolean}
+	 */
+	 this.remove = (element) => {
+		 var index = this.indexOf(element);
+		 return index >= 0 ? this.removeAt(index).element : index;
+	 };
+
+	 
+
+
 
 
 

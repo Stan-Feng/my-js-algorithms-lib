@@ -64,6 +64,12 @@ describe.only('DataStructure -- LinkedList: \n', () => {
         indexOf.should.be.exist;
         indexOf.should.be.a('function');
       });
+
+      it('should have remove() method \n', () => {
+        var remove= linkedlist.remove;
+        remove.should.be.exist;
+        remove.should.be.a('function');
+      });
     });
 
 
@@ -385,6 +391,39 @@ describe.only('DataStructure -- LinkedList: \n', () => {
 
     });
 
+
+    describe('LinkedList -- remove() method: \n', () => {
+      it('should thrwo error when remove an empty list \n', () => {
+        var linkedlist = new LinkedList();
+        var result = linkedlist.remove(123);
+
+        result.should.be.an('error');
+      });
+
+      it('should return -1 when the element does not exist \n', () => {
+        var linkedlist = new LinkedList();
+        linkedlist.append(1);
+        linkedlist.append(2);
+        linkedlist.append(3);
+
+        var result = linkedlist.remove(4);
+        result.should.equal(-1);
+      });
+
+      it('should remove correct element in the linkedlist \n', () =>{
+        var linkedlist = new LinkedList();
+        linkedlist.append(1);
+        linkedlist.append(2);
+        linkedlist.append(3);
+
+        var result1 = linkedlist.remove(1);
+        result1.should.equal(1);
+
+        var result2 = linkedlist.remove(1);
+        result2.should.equal(-1);
+
+      });
+    });
 
 
   });
