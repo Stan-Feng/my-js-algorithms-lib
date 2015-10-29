@@ -2,14 +2,16 @@ const chai = require('chai');
 const should = chai.should();
 
 /**
+ * @todo: test whether it is a class && contains all input methods
  * @param: {class} DataStructure
  * @param: {array} methods
  */
 let commonTest = (DataStructure, methods) => {
-	describe('This DataStructure should create brand new objects: \n', () => {
+	describe('This DataStructure should create brand new objects \n', () => {
 
-    it('This parameter should be a class \n ', () => {
-      DataStructure.should.be.a('class');
+    it('This parameter should be a constructor\n ', () => {
+      DataStructure.should.be.a('function');
+			(new DataStructure() instanceof Function).should.equal(false);
     });
 
 
