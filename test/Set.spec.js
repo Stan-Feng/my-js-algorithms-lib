@@ -46,8 +46,32 @@ describe.only('DataStructure -- Set: \n', () => {
 
   describe('Set -- remove(item) method: \n', () => {
     it('should throw error when removed elemet does not exist. \n', () => {
-
+      let result = set.remove(1);
+      result.should.be.an('object');
+      result.should.have.property('isSuccess');
+      result.should.have.property('reason');
+      result.isSuccess.should.be.false;
+      result.reason.should.exist;
     });
+
+    it('should remove element correctly. \n', () => {
+      set.add(1);
+      set.add(2);
+      set.add(3);
+
+      let result = set.remove(2);
+      result.should.equal(2);
+
+      let isExist = set.has(2);
+      isExist.should.be.false;
+
+      let length = set.size();
+      length.should.equal(2);
+    });
+
+  });
+
+  describe('Set -- values() method: \n', () => {
 
   });
 

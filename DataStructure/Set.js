@@ -24,19 +24,21 @@ function Set(){
 
 
   this.remove = function(item){
-    if(this.has(item))
+    if(!this.has(item))
       return { isSuccess: false, reason: 'Element does not exists.' };
 
+    let removedItem = _items[item];
     _size--;
     _items[item] = undefined;
+    return removedItem;
   };
 
   this.has = function(item){
-    return _items.hasOwnProperty(item) || _items[item] !== undefined;
+    return _items.hasOwnProperty(item) && _items[item] !== undefined;
   };
 
   this.clear = function(){
-
+    _items = {};
   };
 
   this.size = function(){
