@@ -19,7 +19,7 @@ function Set(){
 
     _items[item] = item;
     _size++;
-    return { isSsuccess: true };
+    return {isSuccess: true, reason: null};
   };
 
 

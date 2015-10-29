@@ -32,11 +32,23 @@ describe.only('DataStructure -- Set: \n', () => {
     });
 
     it('should item add correctly \n', () => {
-      set.add(1);
+      let result = set.add(1);
+      result.should.be.an('object');
+      result.isSuccess.should.be.true;
+      expect(result.reason).to.be.a('null');
 
       let length = set.size();
       length.should.equal(1);
     });
+
+  });
+
+
+  describe('Set -- remove(item) method: \n', () => {
+    it('should throw error when removed elemet does not exist. \n', () => {
+
+    });
+
   });
 
 
