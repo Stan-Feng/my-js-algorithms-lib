@@ -46,7 +46,17 @@ function Set(){
   };
 
   this.values = function(){
+    if(_size === 0){
+      return [];
+    }
 
+    let arr = [];
+    for (let attr in _items) {
+      if (_items.hasOwnProperty(attr)) {
+        arr.push(_items[attr]);
+      }
+    }
+    return arr;
   };
 
 

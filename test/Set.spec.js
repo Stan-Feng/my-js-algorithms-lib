@@ -72,7 +72,26 @@ describe.only('DataStructure -- Set: \n', () => {
   });
 
   describe('Set -- values() method: \n', () => {
+    it('should return an empty array while set is empty \n ', () => {
+      let result = set.values();
+      result.should.be.an('array');
+      result.should.have.length(0);
+    });
 
+    it('should return an array with all items \n', () =>{
+      set.add(1);
+      set.add(2);
+      set.add(3);
+
+      let result = set.values();
+
+      result.should.be.an('array');
+      result.should.have.length(3);
+
+      result.map(item => {
+        item.should.be.a('number');
+      });
+    });
   });
 
 
