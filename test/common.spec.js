@@ -1,29 +1,41 @@
-import { should } from 'chai';
-import { expect } from 'chai';
-import LinkedList from '../DataStructure/LinkedList';
+const chai = require('chai');
+const should = chai.should();
 
 /**
- * @todo: Make a common test for all DataStructure
- * @param: {class} target
+ * @param: {class} DataStructure
+ * @param: {array} methods
  */
-let commonTest = (data_structure) => {
-  let methods = [];
-  let getType = type =>  typeof type; ;
+let commonTest = (DataStructure, methods) => {
+	describe('This DataStructure should create brand new objects: \n', () => {
 
-  for (let attr in data_structure) {
-    if (data_structure.hasOwnProperty(attr) && (typeof data_structure.attr === 'function')) {
-      methods.push(attr);
-    }
+    it('This parameter should be a class \n ', () => {
+      DataStructure.should.be.a('class');
+    });
 
-  }
-  console.log(methods);
-  console.log(getType(data_structure.size));
+
+		it('This class should create two objects which are not equal \n', () => {
+			let d1 = new DataStructure();
+			let d2 = new DataStructure();
+      let result = (d1 === d2);
+
+      result.should.be.a('boolean');
+      result.should.be.false;
+      result.should.equal(false);
+		});
+
+	});
+
+  describe('This DataStructure should have these methods \n', () => {
+    const instance = new DataStructure();
+    methods.map(method => {
+        it('should have ' + method + ' method \n', () => {
+          var type = typeof(instance[method]);
+          type.should.be.a('string');
+          type.should.equal('function');
+        });
+    });
+  });
 };
 
 
-describe('This DataStructure should create brand new objects', ()=> {
-  it('should return co', () => {
-    commonTest(new LinkedList());
-
-  });
-});
+module.exports = commonTest;
