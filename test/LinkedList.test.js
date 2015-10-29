@@ -6,7 +6,7 @@ const listPath = '../DataStructure/LinkedList';
 var LinkedList = require(listPath);
 
 
-describe.only('DataStructure -- LinkedList: \n', () => {
+describe('DataStructure -- LinkedList: \n', () => {
 
   describe('LinkedList -- Export: \n', () => {
 
