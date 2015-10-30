@@ -92,27 +92,43 @@ Set.prototype.union = function (otherSet) {
 };
 
 Set.prototype.intersection = function (otherSet) {
-  if (!(otherSet instanceof Set)) {
+	if (!(otherSet instanceof Set)) {
 		return {
 			isSuccess: false,
 			reason: 'invalid input.'
 		};
 	}
 
-  let instersectedSet = new Set();
+	let instersectedSet = new Set();
 
-  this.values().map(item => {
-    if (otherSet.has(item)){
-      instersectedSet.add(item);
-    }
-  });
+	this.values().map(item => {
+		if (otherSet.has(item)) {
+			instersectedSet.add(item);
+		}
+	});
 
-  return instersectedSet;
+	return instersectedSet;
 };
 
 
 Set.prototype.difference = function (otherSet) {
+	//@TODO: Return the difference of this set from otherSet
+	if (!(otherSet instanceof Set)) {
+		return {
+			isSuccess: false,
+			reason: 'invalid input.'
+		};
+	}
 
+  let diffSet = new Set();
+
+  this.values().map(item => {
+    if(!otherSet.has(item)){
+      diffSet.add(item);
+    }
+  });
+
+  return diffSet;
 };
 
 Set.prototype.subset = function (otherSet) {

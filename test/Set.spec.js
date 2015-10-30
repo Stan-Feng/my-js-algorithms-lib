@@ -163,6 +163,46 @@ describe.only('DataStructure -- Set: \n', () => {
 
   });
 
+  describe('Set -- prototype.difference() method: \n', () => {
+
+    it('should return false when input is not a Set instance. \n', () => {
+      let result = set.difference(123);
+      result.should.be.an('object');
+      result.should.have.property('isSuccess');
+      result.should.have.property('reason');
+      result.isSuccess.should.be.false;
+    });
+
+    it('should find difference of setA from setB \n', () => {
+      set.add(1);
+      set.add(2);
+      set.add(3);
+      set.add(4);
+
+      let otherSet = new Set();
+      otherSet.add(3);
+      otherSet.add(5);
+      otherSet.add(4);
+      otherSet.add(7);
+      otherSet.add(9);
+
+      let diffOfA = set.difference(otherSet);
+      diffOfA.should.be.an('object');
+      (diffOfA instanceof Set).should.be.true;
+
+      let values = diffOfA.values();
+      values.should.have.length(2);
+      values[0].should.be.equal(1);
+      values[1].should.be.equal(2);
+
+      let diffOfB = otherSet.difference(set);
+      diffOfB.values().should.have.length(3);
+      (diffOfB.has(5)).should.be.equal(true);
+      (diffOfB.has(7)).should.be.equal(true);
+      (diffOfB.has(9)).should.be.equal(true);
+    });
+  });
+
 
 });
 
