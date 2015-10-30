@@ -149,19 +149,4 @@ Set.prototype.subset = function (otherSet) {
 	return true;
 };
 
-
-
-
 module.exports = Set;
-
-
-
-
-
-
-
-
-
-
-
-
