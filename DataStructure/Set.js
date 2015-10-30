@@ -73,8 +73,8 @@ function Set() {
 Set.prototype.union = function (otherSet) {
 	if (!(otherSet instanceof Set)) {
 		return {
-			'isSuccess': false,
-			'reason': 'invalid input.'
+			isSuccess: false,
+			reason: 'invalid input.'
 		};
 	}
 
@@ -91,16 +91,31 @@ Set.prototype.union = function (otherSet) {
 	return unionSet;
 };
 
-Set.prototype.intersection = (otherSet) => {
+Set.prototype.intersection = function (otherSet) {
+  if (!(otherSet instanceof Set)) {
+		return {
+			isSuccess: false,
+			reason: 'invalid input.'
+		};
+	}
 
+  let instersectedSet = new Set();
+
+  this.values().map(item => {
+    if (otherSet.has(item)){
+      instersectedSet.add(item);
+    }
+  });
+
+  return instersectedSet;
 };
 
 
-Set.prototype.difference = (otherSet) => {
+Set.prototype.difference = function (otherSet) {
 
 };
 
-Set.prototype.subset = (otherSet) => {
+Set.prototype.subset = function (otherSet) {
 
 };
 

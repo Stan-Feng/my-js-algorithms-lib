@@ -95,8 +95,8 @@ describe.only('DataStructure -- Set: \n', () => {
     });
   });
 
-
   describe('Set -- prototype.union() method: \n', () => {
+
     it('should return false when input is not a Set instance. \n', () => {
       let result = set.union(123);
       result.should.be.an('object');
@@ -130,6 +130,39 @@ describe.only('DataStructure -- Set: \n', () => {
     });
 
   });
+
+  describe('Set -- prototype.intersection() method: \n', () => {
+    it('should return false when input is not a Set instance. \n', () => {
+      let result = set.intersection(123);
+      result.should.be.an('object');
+      result.should.have.property('isSuccess');
+      result.should.have.property('reason');
+      result.isSuccess.should.be.false;
+    });
+
+    it('should return correct intersection set \n', () => {
+      set.add(1);
+      set.add(2);
+      set.add(3);
+
+      let otherSet = new Set;
+      otherSet.add(2);
+      otherSet.add(3);
+      otherSet.add(4);
+      otherSet.add(5);
+
+      let resultSet = set.intersection(otherSet);
+      resultSet.should.be.an('object');
+      resultSet.size().should.equal(2);
+
+      resultSet.has(2).should.be.true;
+      resultSet.has(3).should.be.true;
+
+      resultSet.has(1).should.be.false;
+    });
+
+  });
+
 
 });
 
