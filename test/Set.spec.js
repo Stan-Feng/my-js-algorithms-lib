@@ -118,7 +118,15 @@ describe.only('DataStructure -- Set: \n', () => {
       let result = set.union(otherSet);
 
       result.should.be.an('object');
-      console.log(result instanceof Set);
+      (result instanceof Set).should.equal(true);
+
+      result.values().should.be.an('array');
+      let count = 1;
+      result.values().map(item => {
+        item.should.be.a('number');
+        item.should.equal(count);
+        count++;
+      });
     });
 
   });
