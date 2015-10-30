@@ -58,8 +58,23 @@ function Set(){
     }
     return arr;
   };
-
-
 }
 
-export default Set;
+Set.prototype.union = (otherSet) => {
+  
+};
+
+Set.prototype.intersection = (otherSet) => {
+
+};
+
+
+Set.prototype.difference = (otherSet) => {
+
+};
+
+Set.prototype.subset = (otherSet) => {
+
+};
+
+module.exports = Set;

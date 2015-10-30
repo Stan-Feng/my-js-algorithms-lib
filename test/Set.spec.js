@@ -6,7 +6,8 @@ import Set from '../DataStructure/Set';
 import commonTest from './common.spec';
 
 describe.only('DataStructure -- Set: \n', () => {
-  commonTest(Set, ['add', 'remove', 'has', 'clear', 'size', 'values']);
+  commonTest(Set, ['add', 'remove', 'has', 'clear', 'size', 'values',
+                    'union', 'intersection', 'difference', 'subset']);
 
   let set;
   beforeEach(() => {
