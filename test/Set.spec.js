@@ -203,7 +203,36 @@ describe.only('DataStructure -- Set: \n', () => {
     });
   });
 
+  describe('Set -- prototype.subset() method:]n ', () => {
+    it('should return false when input is not a Set instance. \n', () => {
+      let result = set.subset(123);
+      result.should.be.an('object');
+      result.should.have.property('isSuccess');
+      result.should.have.property('reason');
+      result.isSuccess.should.be.false;
+    });
 
+    it('should judge coorectly whether this set is subset of other set \n', () => {
+      let otherSet = new Set();
+
+      set.add(1);
+      set.add(2);
+      set.add(3);
+      set.add(4);
+
+      otherSet.add(1);
+      otherSet.add(2);
+      otherSet.add(3);
+      otherSet.add(4);
+      otherSet.add(5);
+      otherSet.add(6);
+
+      let result = set.subset(otherSet);
+      result.should.be.a('boolean');
+      result.should.be.true;
+      result.should.equal(true);
+    });
+  });
 });
 
 

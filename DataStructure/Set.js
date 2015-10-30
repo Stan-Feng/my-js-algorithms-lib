@@ -132,7 +132,36 @@ Set.prototype.difference = function (otherSet) {
 };
 
 Set.prototype.subset = function (otherSet) {
+	//return whether this set is subset of otherSet
+	if (!(otherSet instanceof Set)) {
+		return {
+			isSuccess: false,
+			reason: 'invalid input.'
+		};
+	}
 
+	this.values().map(item => {
+		if(!otherSet.has(item)){
+			return false;
+		}
+	});
+
+	return true;
 };
 
+
+
+
 module.exports = Set;
+
+
+
+
+
+
+
+
+
+
+
+
