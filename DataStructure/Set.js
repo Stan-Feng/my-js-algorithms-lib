@@ -9,59 +9,86 @@
  * @method: values() --> return an array contains all items
  */
 
-function Set(){
-  let _items = {};
-  let _size = 0;
+function Set() {
+	let _items = {};
+	let _size = 0;
 
-  this.add = function(item){
-    if(this.has(item))
-      return { isSuccess: false, reason: 'Element already exists.' };
+	this.add = function (item) {
+		if (this.has(item))
+			return {
+				isSuccess: false,
+				reason: 'Element already exists.'
+			};
 
-    _items[item] = item;
-    _size++;
-    return {isSuccess: true, reason: null};
-  };
+		_items[item] = item;
+		_size++;
+		return {
+			isSuccess: true,
+			reason: null
+		};
+	};
 
 
-  this.remove = function(item){
-    if(!this.has(item))
-      return { isSuccess: false, reason: 'Element does not exists.' };
+	this.remove = function (item) {
+		if (!this.has(item))
+			return {
+				isSuccess: false,
+				reason: 'Element does not exists.'
+			};
 
-    let removedItem = _items[item];
-    _size--;
-    _items[item] = undefined;
-    return removedItem;
-  };
+		let removedItem = _items[item];
+		_size--;
+		_items[item] = undefined;
+		return removedItem;
+	};
 
-  this.has = function(item){
-    return _items.hasOwnProperty(item) && _items[item] !== undefined;
-  };
+	this.has = function (item) {
+		return _items.hasOwnProperty(item) && _items[item] !== undefined;
+	};
 
-  this.clear = function(){
-    _items = {};
-  };
+	this.clear = function () {
+		_items = {};
+	};
 
-  this.size = function(){
-    return _size;
-  };
+	this.size = function () {
+		return _size;
+	};
 
-  this.values = function(){
-    if(_size === 0){
-      return [];
-    }
+	this.values = function () {
+		if (_size === 0) {
+			return [];
+		}
 
-    let arr = [];
-    for (let attr in _items) {
-      if (_items.hasOwnProperty(attr)) {
-        arr.push(_items[attr]);
-      }
-    }
-    return arr;
-  };
+		let arr = [];
+		for (let attr in _items) {
+			if (_items.hasOwnProperty(attr)) {
+				arr.push(_items[attr]);
+			}
+		}
+		return arr;
+	};
 }
 
-Set.prototype.union = (otherSet) => {
-  
+//Set Operations:
+Set.prototype.union = function (otherSet) {
+	if (!(otherSet instanceof Set)) {
+		return {
+			'isSuccess': false,
+			'reason': 'invalid input.'
+		};
+	}
+
+	let unionSet = new Set();
+
+	this.values().map(item => {
+		unionSet.add(item);
+	});
+
+	otherSet.values().map(item => {
+		unionSet.add(item);
+	});
+
+	return unionSet;
 };
 
 Set.prototype.intersection = (otherSet) => {

@@ -96,6 +96,32 @@ describe.only('DataStructure -- Set: \n', () => {
   });
 
 
+  describe('Set -- prototype.union() method: \n', () => {
+    it('should return false when input is not a Set instance. \n', () => {
+      let result = set.union(123);
+      result.should.be.an('object');
+      result.should.have.property('isSuccess');
+      result.should.have.property('reason');
+      result.isSuccess.should.be.false;
+    });
+
+    it('should return a correct set with no element repeated. \n', () => {
+      set.add(1);
+      set.add(2);
+      set.add(3);
+
+      let otherSet = new Set();
+      otherSet.add(3);
+      otherSet.add(4);
+      otherSet.add(5);
+
+      let result = set.union(otherSet);
+
+      result.should.be.an('object');
+      console.log(result instanceof Set);
+    });
+
+  });
 
 });
 
