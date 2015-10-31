@@ -63,7 +63,7 @@ function Dictionary() {
     for (let variable in _items) {
       if (_items.hasOwnProperty(variable)) {
           values.push(_items[variable]);
-      }
+        }
     }
 
     return values;
