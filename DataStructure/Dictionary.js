@@ -5,7 +5,9 @@ function Dictionary() {
   var _size = 0;
 
   this.set = (key, value) => {
-
+    //Add new value or update value
+    _items[key] = value;
+    _size++;
   };
 
   this.remove = (key) => {
@@ -13,7 +15,7 @@ function Dictionary() {
   };
 
   this.has = (key) => {
-
+    return key in _items;
   };
 
   this.get = (key) => {
@@ -27,7 +29,7 @@ function Dictionary() {
   this.values = () => {
 
   };
-  
+
   this.clear = () => {
       _items = {};
   };
