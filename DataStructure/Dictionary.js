@@ -51,7 +51,14 @@ function Dictionary() {
   };
 
   this.values = () => {
+    var values = [];
+    for (let variable in _items) {
+      if (_items.hasOwnProperty(variable)) {
+          values.push(variable);
+      }
+    }
 
+    return values;
   };
 
   this.clear = () => {

@@ -73,6 +73,20 @@ describe.only('DataStructure -- Dictionary(Map): \n', () => {
 
   });
 
+  describe('Dictionary(Map) -- get(key) method \n', () => {
+    it('should return an array contains all values of dictionary \n', () => {
+      dictionary.set('age', '21');
+      dictionary.set('gender', 'Male');
+
+      var result = dictionary.values();
+      result.should.be.an('array');
+      result.should.have.length(3);
+      result[0].should.equal('name');
+      result[1].should.equal('age');
+      result[2].should.equal('gender');
+    });
+  });
+
 
 });
 
