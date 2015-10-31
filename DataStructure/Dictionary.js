@@ -47,14 +47,22 @@ function Dictionary() {
   };
 
   this.keys = () => {
+    var keys = [];
 
+    for (let variable in _items) {
+      if (_items.hasOwnProperty(variable)) {
+        keys.push(variable);
+      }
+    }
+
+    return keys;
   };
 
   this.values = () => {
     var values = [];
     for (let variable in _items) {
       if (_items.hasOwnProperty(variable)) {
-          values.push(variable);
+          values.push(_items[variable]);
       }
     }
 

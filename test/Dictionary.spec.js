@@ -73,12 +73,12 @@ describe.only('DataStructure -- Dictionary(Map): \n', () => {
 
   });
 
-  describe('Dictionary(Map) -- get(key) method \n', () => {
+  describe('Dictionary(Map) -- keys() method \n', () => {
     it('should return an array contains all values of dictionary \n', () => {
       dictionary.set('age', '21');
       dictionary.set('gender', 'Male');
 
-      var result = dictionary.values();
+      var result = dictionary.keys();
       result.should.be.an('array');
       result.should.have.length(3);
       result[0].should.equal('name');
@@ -87,7 +87,19 @@ describe.only('DataStructure -- Dictionary(Map): \n', () => {
     });
   });
 
+  describe('Dictionary(Map) -- values() method \n', () => {
+    it('should return an array contains all values of dictionary \n', () => {
+      dictionary.set('age', '21');
+      dictionary.set('gender', 'Male');
 
+      var result = dictionary.values();
+      result.should.be.an('array');
+      result.should.have.length(3);
+      result[0].should.equal('Stan Feng');
+      result[1].should.equal('21');
+      result[2].should.equal('Male');
+    });
+  });
 });
 
 
