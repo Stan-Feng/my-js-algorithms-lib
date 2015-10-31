@@ -56,5 +56,32 @@ describe.only('DataStructure -- Dictionary(Map): \n', () => {
 
   });
 
+  describe('Dictionary(Map) -- get(key) method \n', () => {
+    it('should return error message when the key is not found \n', () => {
+      var result = dictionary.get('age');
+      result.should.be.an('object');
+      result.should.have.property('key');
+      result.should.have.property('error');
+      result.key.should.equal('age');
+    });
+
+    it('should return value correctly \n', () => {
+      var result = dictionary.get('name');
+      result.should.be.a('string');
+      result.should.equal('Stan Feng');
+    });
+
+  });
+
 
 });
+
+
+
+
+
+
+
+
+
+

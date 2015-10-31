@@ -36,7 +36,14 @@ function Dictionary() {
   };
 
   this.get = (key) => {
+    if(!this.has(key)){
+      return {
+        error: new Error('Key does not exist.'),
+        key: key
+      };
+    }
 
+    return _items[key];
   };
 
   this.keys = () => {
