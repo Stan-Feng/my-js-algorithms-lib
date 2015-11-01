@@ -73,7 +73,7 @@ describe.only('DataStructure -- HashTable', () => {
 
   });
 
-  describe('HashTabel -- remove() method \n', () => {
+  describe('HashTabel -- remove(key) method \n', () => {
     it('should remove LinkedList then set value to be undefined \n ', () => {
       var result = table.remove('name');
       result.should.be.true;
@@ -105,6 +105,22 @@ describe.only('DataStructure -- HashTable', () => {
       expect(allLinkedList[1]).to.be.an('object');
     });
 
+  });
+
+  describe('HashTabel -- get(key) method \n', () => {
+    it('should get exists key correctly \n', () => {
+      table.put('name', 'stan');
+
+      var getResult = table.get('name');
+      getResult.should.be.an('array');
+      getResult.should.have.length(2);
+      getResult[0].should.be.equal('fjw');
+      getResult[1].should.be.equal('stan');
+    });
+
+    it('shoud return undefined if the key is not exists \n', () => {
+      expect(table.remove('age')).to.be.undefined;
+    });
   });
 
 });

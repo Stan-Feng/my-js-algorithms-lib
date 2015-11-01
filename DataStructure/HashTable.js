@@ -53,19 +53,22 @@ function Hash_table(hashFunc) {
     var position = _hashFunc(key);
 
     if(_table[position] !== undefined){
-        var currentNode = _table[position].getHead();
+        let currentNode = _table[position].getHead();
+        let allNodes = [];
 
         while (currentNode.next) {
           if (currentNode.element.key === key){
-            return currentNode.element.value;
+            allNodes.push(currentNode.element.value);
           }
           currentNode = currentNode.next;
         }
 
         //Check start position or last position
         if(currentNode.element.key === key){
-          return currentNode.element.value;
+          allNodes.push(currentNode.element.value);
         }
+
+        return allNodes;
     }
 
     return undefined;
