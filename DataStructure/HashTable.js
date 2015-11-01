@@ -1,33 +1,34 @@
 'use strict';
 let LinkedList = require('./LinkedList');
 
-function HashTable(hashFunc) {
+function Hash_table(hashFunc) {
   var _table = [];
   var _hashFunc = hashFunc || loseloseHashCode;
 
 
   this.put = (key, value) => {
     var position = _hashFunc(key);
-    if(table[position] === undefined){
-      table[position] = new LinkedList;
+
+    if(_table[position] === undefined){
+      _table[position] = new LinkedList;
     }
 
-    table[position].append(new ValuePair(key, value));
+    _table[position].append(new ValuePair(key, value));
   };
 
   this.remove = (key) => {
     var position = _hashFunc(key);
 
-    if(table[position] !== undefined){
-      var currentNode = table[position].getHead();
+    if(_table[position] !== undefined){
+      var currentNode = _table[position].getHead();
 
       while (currentNode.next){
         if(currentNode.element.key === key){
-          table[position].remove(currentNode.element);
+          _table[position].remove(currentNode.element);
         }
 
-        if(table[position].isEmpty()){
-          table[position] = undefined;
+        if(_table[position].isEmpty()){
+          _table[position] = undefined;
         }
 
         currentNode = currentNode.next;
@@ -35,10 +36,10 @@ function HashTable(hashFunc) {
 
       //Check in case of first of last element
       if(currentNode.element.key === key) {
-        table[position].remove(currentNode.element);
+        _table[position].remove(currentNode.element);
 
-        if(table[position].isEmpty()){
-          table[position] = undefined;
+        if(_table[position].isEmpty()){
+          _table[position] = undefined;
         }
 
         return true;
@@ -47,14 +48,14 @@ function HashTable(hashFunc) {
       return false;
     }
 
-    delete table[_hashFunc(key)];
+    delete _table[_hashFunc(key)];
   };
 
   this.get = (key) => {
     var position = _hashFunc(key);
 
-    if(table[position] !== undefined){
-        var currentNode = table[position].getHead();
+    if(_table[position] !== undefined){
+        var currentNode = _table[position].getHead();
 
         while (currentNode.next) {
           if (currentNode.element.key === key){
@@ -74,8 +75,7 @@ function HashTable(hashFunc) {
 
   this.getAllItems = () => {
     var items = [];
-
-    for (var variable in _table) {
+    for (let variable in _table) {
       if (_table.hasOwnProperty(variable)) {
         items.push(_table[variable]);
       }
@@ -94,11 +94,11 @@ function HashTable(hashFunc) {
     var hash = 0;
 
     for (let i = 0; i < key.length; i++) {
-      hash += key.charAt(i);
+      hash += key.charCodeAt(i);
     }
 
     return hash % 37;
   }
 }
 
-module.exports = HashTable;
+module.exports = Hash_table;
