@@ -1,9 +1,8 @@
 'use strict';
-let LinkedList = require('../LinkedList');
+let LinkedList = require('./LinkedList');
 
 function HashTable(hashFunc) {
   var _table = [];
-  var _size = 0;
   var _hashFunc = hashFunc || loseloseHashCode;
 
 
@@ -14,7 +13,6 @@ function HashTable(hashFunc) {
     }
 
     table[position].append(new ValuePair(key, value));
-    _size++;
   };
 
   this.remove = (key) => {
@@ -50,7 +48,6 @@ function HashTable(hashFunc) {
     }
 
     delete table[_hashFunc(key)];
-    _size--;
   };
 
   this.get = (key) => {
@@ -73,6 +70,18 @@ function HashTable(hashFunc) {
     }
 
     return undefined;
+  };
+
+  this.getAllItems = () => {
+    var items = [];
+
+    for (var variable in _table) {
+      if (_table.hasOwnProperty(variable)) {
+        items.push(_table[variable]);
+      }
+    }
+
+    return items;
   };
 
 
