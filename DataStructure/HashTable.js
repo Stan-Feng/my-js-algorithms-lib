@@ -47,8 +47,6 @@ function Hash_table(hashFunc) {
 
       return false;
     }
-
-    delete _table[_hashFunc(key)];
   };
 
   this.get = (key) => {
