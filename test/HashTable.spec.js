@@ -6,7 +6,7 @@ const LinkedList = require('../DataStructure/LinkedList');
 const commonTest = require('./common.spec');
 
 
-describe.only('DataStructure -- HashTable', () => {
+describe('DataStructure -- HashTable', () => {
   commonTest(HashTable, ['remove', 'get', 'put']);
 
   var table;
