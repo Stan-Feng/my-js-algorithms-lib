@@ -25,8 +25,18 @@ function BinarySearchTree() {
 	};
 
 
-	this.search = function (key) {
-
+	//Another kind of patter do recursive by its own instead of writing a static method
+	this.search = function searchHelp(key, node=__root) {
+		if (node === null) {
+			return false;
+		}
+		if (key < node.key) {
+			return searchHelp(key, node.left);
+		} else if (key > node.key) {
+			return searchHelp(key, node.right);
+		} else {
+			return true;
+		}
 	};
 
 
@@ -67,7 +77,7 @@ function BinarySearchTree() {
 	};
 
 	this.max = function () {
-    return __static__searchMaxNode(__root);
+		return __static__searchMaxNode(__root);
 	};
 
 	this.remove = function (key) {
@@ -121,25 +131,25 @@ function BinarySearchTree() {
 	}
 
 
-  function __static__searchMinNode(node) {
-    if (node) {
-      while (node && node.left !== null) {
-        node = node.left;
-      }
-      return node.key;
-    }
-    return null;
-  }
+	function __static__searchMinNode(node) {
+		if (node) {
+			while (node && node.left !== null) {
+				node = node.left;
+			}
+			return node.key;
+		}
+		return null;
+	}
 
-  function __static__searchMaxNode(node) {
-    if (node) {
-      while (node && node.right !== null) {
-        node = node.right ;
-      }
-      return node.key;
-    }
-    return null;
-  }
+	function __static__searchMaxNode(node) {
+		if (node) {
+			while (node && node.right !== null) {
+				node = node.right;
+			}
+			return node.key;
+		}
+		return null;
+	}
 
 }
 
