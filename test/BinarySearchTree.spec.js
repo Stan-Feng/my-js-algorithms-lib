@@ -110,6 +110,39 @@ describe.only('DataStructure -- Tree : \n', () => {
     });
    });
 
+   describe('BinarySearchTree -- min() method \n', () => {
+     it('should return the min value of the whole tree \n', () => {
+      binaryTree.insert(11);
+      binaryTree.insert(7);
+      binaryTree.insert(15);
+      binaryTree.insert(5);
+      binaryTree.insert(3);
+      binaryTree.insert(9);
+      binaryTree.insert(8);
+      binaryTree.insert(10);
+      binaryTree.insert(13);
+      binaryTree.insert(12);
+      binaryTree.insert(14);
+      binaryTree.insert(20);
+      binaryTree.insert(18);
+      binaryTree.insert(25);
+      binaryTree.insert(6);
+
+      var minKey = binaryTree.min();
+      minKey.should.equal(3);
+
+      binaryTree.insert(11);
+      binaryTree.insert(7);
+      binaryTree.insert(15);
+      binaryTree.insert(5);
+      binaryTree.insert(3);
+      binaryTree.insert(9);
+      binaryTree.insert(1);
+
+      var minKey = binaryTree.min();
+      minKey.should.equal(1);
+     });
+   });
 
 });
 
