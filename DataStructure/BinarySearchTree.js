@@ -51,7 +51,7 @@ function BinarySearchTree() {
   };
 
   function __staticInsertNode(currentNode, insertNode) {
-    if (currentNode.key < insertNode.key) {
+    if (currentNode.key > insertNode.key) {
       if (currentNode.left === null) {
         currentNode.left = insertNode;
         return true;

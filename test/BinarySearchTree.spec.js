@@ -33,7 +33,21 @@ describe.only('DataStructure -- Tree : \n', () => {
      });
 
      it('should insert node correctly based on their key \n', () => {
-       
+       binaryTree.insert(3);
+       binaryTree.insert(1);
+       binaryTree.insert(2);
+       binaryTree.insert(4);
+       binaryTree.insert(5);
+
+       var root = binaryTree.getRoot();
+       root.key.should.equal(3);
+
+       root.left.should.be.an('object');
+       root.left.key.should.equal(1);
+       root.left.right.key.should.equal(2);
+
+       root.right.key.should.equal(4);
+       root.right.right.key.should.equal(5);
      });
 
 
