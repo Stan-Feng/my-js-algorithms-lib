@@ -15,7 +15,7 @@ function BinarySearchTree() {
       return true;
     }
 
-
+    __staticInsertNode(__root, new __Node(key));
   };
 
   this.search = function (key) {
@@ -52,9 +52,20 @@ function BinarySearchTree() {
 
   function __staticInsertNode(currentNode, insertNode) {
     if (currentNode.key < insertNode.key) {
+      if (currentNode.left === null) {
+        currentNode.left = insertNode;
+        return true;
+      }
+      //Go left
+      __staticInsertNode(currentNode.left, insertNode);
 
     } else {
-
+      if(currentNode.right === null) {
+        currentNode.right = insertNode;
+        return true;
+      }
+      //Go right
+      __staticInsertNode(currentNode.right, insertNode);
     }
   }
 

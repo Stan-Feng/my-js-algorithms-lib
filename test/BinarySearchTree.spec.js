@@ -32,7 +32,11 @@ describe.only('DataStructure -- Tree : \n', () => {
         expect(root.key).to.equal(1);
      });
 
-     
+     it('should insert node correctly based on their key \n', () => {
+       
+     });
+
+
    });
 
 
