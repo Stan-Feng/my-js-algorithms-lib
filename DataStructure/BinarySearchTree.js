@@ -67,7 +67,7 @@ function BinarySearchTree() {
 	};
 
 	this.max = function () {
-		// body...
+    return __static__searchMaxNode(__root);
 	};
 
 	this.remove = function (key) {
@@ -125,6 +125,16 @@ function BinarySearchTree() {
     if (node) {
       while (node && node.left !== null) {
         node = node.left;
+      }
+      return node.key;
+    }
+    return null;
+  }
+
+  function __static__searchMaxNode(node) {
+    if (node) {
+      while (node && node.right !== null) {
+        node = node.right ;
       }
       return node.key;
     }

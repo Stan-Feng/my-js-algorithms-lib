@@ -144,5 +144,39 @@ describe.only('DataStructure -- Tree : \n', () => {
      });
    });
 
+ describe('BinarySearchTree -- max() method \n', () => {
+     it('should return the max value of the whole tree \n', () => {
+      binaryTree.insert(11);
+      binaryTree.insert(7);
+      binaryTree.insert(15);
+      binaryTree.insert(5);
+      binaryTree.insert(3);
+      binaryTree.insert(9);
+      binaryTree.insert(8);
+      binaryTree.insert(10);
+      binaryTree.insert(13);
+      binaryTree.insert(12);
+      binaryTree.insert(14);
+      binaryTree.insert(20);
+      binaryTree.insert(18);
+      binaryTree.insert(25);
+      binaryTree.insert(6);
+
+      var max = binaryTree.max();
+      max.should.equal(25);
+
+      binaryTree.insert(11);
+      binaryTree.insert(7);
+      binaryTree.insert(15);
+      binaryTree.insert(5);
+      binaryTree.insert(3);
+      binaryTree.insert(9);
+      binaryTree.insert(100);
+
+      var max = binaryTree.max();
+      max.should.equal(100);
+     });
+   });
+
 });
 
