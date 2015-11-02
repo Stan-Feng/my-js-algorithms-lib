@@ -10,6 +10,11 @@ function BinarySearchTree() {
   var __root = null;
 
   this.insert = function (key) {
+    if( __root === null) {
+      __root = new __Node(key);
+      return true;
+    }
+
 
   };
 
@@ -41,6 +46,17 @@ function BinarySearchTree() {
 
   };
 
+  this.getRoot= function () {
+    return __root;
+  };
+
+  function __staticInsertNode(currentNode, insertNode) {
+    if (currentNode.key < insertNode.key) {
+
+    } else {
+
+    }
+  }
 
   function __Node(key) {
     this.key = key;
