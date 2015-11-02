@@ -49,8 +49,49 @@ describe.only('DataStructure -- Tree : \n', () => {
        root.right.key.should.equal(4);
        root.right.right.key.should.equal(5);
      });
+   });
 
 
+   describe('BinarySearchTree -- inOrderTraverse() method \n', () => {
+
+     it('should return the correct array at correct order \n', () => {
+      binaryTree.insert(11);
+      binaryTree.insert(7);
+      binaryTree.insert(15);
+      binaryTree.insert(5);
+      binaryTree.insert(3);
+      binaryTree.insert(9);
+
+      var result = binaryTree.inOrderTraverse();
+      result.should.be.an('array');
+      result.should.have.length(6);
+      result[0].should.equal(3);
+      result[1].should.equal(5);
+      result[2].should.equal(7);
+      result[3].should.equal(9);
+      result[4].should.equal(11);
+      result[5].should.equal(15);
+     });
+
+    it('should return the number from smallest one to largest one \n', () => {
+      binaryTree.insert(11);
+      binaryTree.insert(7);
+      binaryTree.insert(15);
+      binaryTree.insert(5);
+      binaryTree.insert(3);
+      binaryTree.insert(9);
+      binaryTree.insert(8);
+      binaryTree.insert(10);
+      binaryTree.insert(13);
+      binaryTree.insert(12);
+      binaryTree.insert(14);
+      binaryTree.insert(20);
+      binaryTree.insert(18);
+      binaryTree.insert(25);
+      binaryTree.insert(6);
+
+
+    });
    });
 
 

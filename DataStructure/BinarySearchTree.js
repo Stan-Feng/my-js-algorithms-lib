@@ -15,7 +15,7 @@ function BinarySearchTree() {
       return true;
     }
 
-    __staticInsertNode(__root, new __Node(key));
+    __static__InsertNode(__root, new __Node(key));
   };
 
   this.search = function (key) {
@@ -23,7 +23,13 @@ function BinarySearchTree() {
   };
 
   this.inOrderTraverse = function () {
-    // body...
+    var keys = [];
+
+    __static__TraverseNode(__root, (key) => {
+      keys.push(key);
+    });
+
+    return keys;
   };
 
   this.preOrderTraverse = function () {
@@ -50,14 +56,22 @@ function BinarySearchTree() {
     return __root;
   };
 
-  function __staticInsertNode(currentNode, insertNode) {
+  function __static__TraverseNode(node, callback) {
+    if(node !== null) {
+      __static__TraverseNode(node.left, callback);
+      callback(node.key);
+      __static__TraverseNode(node.right, callback);
+    }
+  }
+
+  function __static__InsertNode(currentNode, insertNode) {
     if (currentNode.key > insertNode.key) {
       if (currentNode.left === null) {
         currentNode.left = insertNode;
         return true;
       }
       //Go left
-      __staticInsertNode(currentNode.left, insertNode);
+      __static__InsertNode(currentNode.left, insertNode);
 
     } else {
       if(currentNode.right === null) {
@@ -65,7 +79,7 @@ function BinarySearchTree() {
         return true;
       }
       //Go right
-      __staticInsertNode(currentNode.right, insertNode);
+      __static__InsertNode(currentNode.right, insertNode);
     }
   }
 
