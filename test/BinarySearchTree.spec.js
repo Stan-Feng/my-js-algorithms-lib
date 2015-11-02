@@ -90,7 +90,23 @@ describe.only('DataStructure -- Tree : \n', () => {
       binaryTree.insert(25);
       binaryTree.insert(6);
 
-
+      var result = binaryTree.inOrderTraverse();
+      result.should.have.length(15);
+      result[0].should.equal(3);
+      result[1].should.equal(5);
+      result[2].should.equal(6);
+      result[3].should.equal(7);
+      result[4].should.equal(8);
+      result[5].should.equal(9);
+      result[6].should.equal(10);
+      result[7].should.equal(11);
+      result[8].should.equal(12);
+      result[9].should.equal(13);
+      result[10].should.equal(14);
+      result[11].should.equal(15);
+      result[12].should.equal(18);
+      result[13].should.equal(20);
+      result[14].should.equal(25);
     });
    });
 
