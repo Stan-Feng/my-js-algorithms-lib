@@ -6,9 +6,9 @@ const should = chai.should();
  * @param: {class} DataStructure
  * @param: {array} methods
  */
-let commonTest = (DataStructure, methods) => {
+var commonTest = (DataStructure, methods) => {
 	methods = methods || [];
-	
+
 	describe('This DataStructure should create brand new objects \n', () => {
 
     it('This parameter should be a constructor\n ', () => {

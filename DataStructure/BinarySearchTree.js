@@ -80,8 +80,31 @@ function BinarySearchTree() {
 		return __static__searchMaxNode(__root);
 	};
 
-	this.remove = function (key) {
+	this.remove = function removeHelp(key, node=__root) {
+    if (node === null) {
+      return null;
+    }
 
+    if (key < node.key) {
+      removeHelp(key, node.left);
+      return node;
+    } else if (key > node.key){
+      removeHelp(key, node.right);
+      return node;
+    } else {
+      // Find the node to be removed
+      if(node.left === null && node.right === null){ // Leaf
+        node = null;
+        return node;
+      } else if (node.left !== null){ // 1 child
+        node = node.left;
+      } else if(node.right !== null){ // 1 child
+        node = node.right;
+      } else { // 2 children
+        
+      }
+
+    }
 	};
 
 	this.getRoot = function () {
