@@ -81,27 +81,22 @@ function BinarySearchTree() {
 	};
 
 	this.remove = function removeHelp(key, node=__root) {
-    if (node === null) {
-      return null;
-    }
-
     if (key < node.key) {
-      removeHelp(key, node.left);
-      return node;
+      return removeHelp(key, node.left);
     } else if (key > node.key){
-      removeHelp(key, node.right);
-      return node;
+      return removeHelp(key, node.right);
     } else {
       // Find the node to be removed
       if(node.left === null && node.right === null){ // Leaf
+        let tempNode = Object.create(node);
         node = null;
-        return node;
+        return tempNode;
       } else if (node.left !== null){ // 1 child
         node = node.left;
       } else if(node.right !== null){ // 1 child
         node = node.right;
       } else { // 2 children
-        
+
       }
 
     }

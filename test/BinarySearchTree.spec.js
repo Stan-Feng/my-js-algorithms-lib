@@ -75,7 +75,7 @@ describe.only('DataStructure -- Tree : \n', () => {
 
 		it('should return the number from smallest one to largest one \n', () => {
       insertElement(binaryTree);
-      
+
 			var result = binaryTree.inOrderTraverse();
 			result.should.have.length(15);
 			result[0].should.equal(3);
@@ -150,8 +150,13 @@ describe.only('DataStructure -- Tree : \n', () => {
 
 	describe('BinarySearchTree -- remove() method \n', () => {
 		it('should return the removed node when remove a leaf node \n', () => {
+      insertElement(binaryTree);
 
-			});
+      var result = binaryTree.remove(3);
+      result.should.be.an('object');
+      result.key.should.equal(3);
+
+		});
 	});
 });
 
