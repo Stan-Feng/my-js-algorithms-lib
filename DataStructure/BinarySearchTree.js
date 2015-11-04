@@ -87,27 +87,33 @@ function BinarySearchTree() {
     }
 
     if (key < node.key) {
+      //Go left
       return removeHelp(key, node.left, node);
-    } else if (key > node.key){
+    }
+    else if (key > node.key){
+      //Go right
       return removeHelp(key, node.right, node);
-    } else {
-      // Find the node to be removed
+    }
+    else {
+      //Removed node has been found
+      //Judege the removing situation
       if(node.left === null && node.right === null){ // Leaf
         let tempNode = Object.create(node);
-        //TODO: How to remove the node.
         if(node.key < parentNode.key){
           parentNode.left = null;
         } else {
           parentNode.right = null;
         }
         return tempNode;
-      } else if (node.left !== null){ // 1 child
-        let tempNode = Object.create(node);
-        node = node.left;
-        return tempNode;
-      } else if(node.right !== null){ // 1 child
-        node = node.right;
-      } else { // 2 children
+      }
+      else if(node.right !== null || node.left !== null){
+         // 1 right child
+         let direction = (node.key < parentNode.key) ? 'left' : 'right';
+         let tempNode = Object.create(node);
+         parentNode[direction] = node.right;
+         return tempNode;
+      }
+      else { // 2 children
 
       }
 

@@ -158,7 +158,63 @@ describe.only('DataStructure -- Tree : \n', () => {
 
       var isExists = binaryTree.search(3);
       isExists.should.be.false;
+
+      var inOrderTraverseResult = binaryTree.inOrderTraverse();
+      inOrderTraverseResult.should.be.an('array');
+      inOrderTraverseResult.should.have.length(14);
+      inOrderTraverseResult[0].should.equal(5);
+      inOrderTraverseResult[13].should.equal(25);
+
+      var result = binaryTree.remove(10);
+      result.should.be.an('object');
+      result.key.should.equal(10);
+
+      var isExists = binaryTree.search(10);
+      isExists.should.be.false;
+
+      var inOrderTraverseResult = binaryTree.inOrderTraverse();
+      inOrderTraverseResult.should.be.an('array');
+      inOrderTraverseResult.should.have.length(13);
+      inOrderTraverseResult[0].should.equal(5);
+      inOrderTraverseResult[12].should.equal(25);
 		});
+
+
+    it('shoud return the removed node when remove a node which contains one child', () => {
+      insertElement(binaryTree);
+
+      binaryTree.remove(3);
+      var result = binaryTree.remove(5);
+      result.should.be.an('object');
+      result.key.should.equal(5);
+
+      var isExists = binaryTree.search(5);
+      isExists.should.be.false;
+
+      var inOrderTraverseResult = binaryTree.inOrderTraverse();
+      inOrderTraverseResult.should.be.an('array');
+      inOrderTraverseResult.should.have.length(13);
+      inOrderTraverseResult[0].should.equal(6);
+      inOrderTraverseResult[12].should.equal(25);
+
+
+      binaryTree.remove(8);
+      var result = binaryTree.remove(9);
+      result.should.be.an('object');
+      result.key.should.equal(9);
+
+      var isExists = binaryTree.search(9);
+      isExists.should.be.false;
+
+      var inOrderTraverseResult = binaryTree.inOrderTraverse();
+      inOrderTraverseResult.should.be.an('array');
+      inOrderTraverseResult.should.have.length(11);
+      inOrderTraverseResult[0].should.equal(6);
+      inOrderTraverseResult[10].should.equal(25);
+
+
+    });
+
 	});
 });
 
