@@ -30,6 +30,7 @@ function BinarySearchTree() {
 		if (node === null) {
 			return false;
 		}
+
 		if (key < node.key) {
 			return searchHelp(key, node.left);
 		} else if (key > node.key) {
@@ -80,19 +81,30 @@ function BinarySearchTree() {
 		return __static__searchMaxNode(__root);
 	};
 
-	this.remove = function removeHelp(key, node=__root) {
+	this.remove = function removeHelp(key, node=__root, parentNode) {
+    if(node === null){
+      return null;
+    }
+
     if (key < node.key) {
-      return removeHelp(key, node.left);
+      return removeHelp(key, node.left, node);
     } else if (key > node.key){
-      return removeHelp(key, node.right);
+      return removeHelp(key, node.right, node);
     } else {
       // Find the node to be removed
       if(node.left === null && node.right === null){ // Leaf
         let tempNode = Object.create(node);
-        node = null;
+        //TODO: How to remove the node.
+        if(node.key < parentNode.key){
+          parentNode.left = null;
+        } else {
+          parentNode.right = null;
+        }
         return tempNode;
       } else if (node.left !== null){ // 1 child
+        let tempNode = Object.create(node);
         node = node.left;
+        return tempNode;
       } else if(node.right !== null){ // 1 child
         node = node.right;
       } else { // 2 children

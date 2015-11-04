@@ -156,6 +156,8 @@ describe.only('DataStructure -- Tree : \n', () => {
       result.should.be.an('object');
       result.key.should.equal(3);
 
+      var isExists = binaryTree.search(3);
+      isExists.should.be.false;
 		});
 	});
 });
