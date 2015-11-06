@@ -5,7 +5,7 @@ const commonTest = require('./common.spec');
 const BinarySearchTree = require('../DataStructure/BinarySearchTree');
 
 
-describe.only('DataStructure -- Tree : \n', () => {
+describe('DataStructure -- Tree : \n', () => {
 	commonTest(BinarySearchTree, ['insert', 'search', 'inOrderTraverse', 'preOrderTraverse', 'postOrderTraverse',
              'min', 'max', 'remove']);
 

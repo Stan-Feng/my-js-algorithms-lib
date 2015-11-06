@@ -113,7 +113,8 @@ function BinarySearchTree() {
          parentNode[direction] = node.right;
          return tempNode;
       }
-      else { // 2 children
+      else {
+        // 2 children
 
       }
 
