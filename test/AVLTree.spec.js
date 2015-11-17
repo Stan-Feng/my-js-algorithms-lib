@@ -34,7 +34,27 @@ describe.only('DataStructure -- AVL Tree: \n', () => {
       root.right.key.should.equal(3);
     });
 
-    it('should insert node recursively \n', () => {
+    it.skip('should insert node recursively \n', () => {
+      tree.insert(5);
+      tree.insert(3);
+      tree.insert(1);
+      tree.insert(2);
+      tree.insert(4);
+      var root = tree.getRoot();
+
+      root.left.left.key.should.equal(1);
+      root.left.right.key.should.equal(4);
+      root.left.left.right.key.should.equal(2);
+    });
+
+
+    it('should rotate the tree properly \n', () => {
+      tree.insert(5);
+      tree.insert(3);
+      tree.insert(4);
+      tree.insert(1);
+      var root = tree.getRoot();
+
 
     });
 
