@@ -4,7 +4,7 @@ const expect = require('chai').expect;
 const commonTest = require('./common.spec');
 const AVLTree= require('../DataStructure/AVLTree');
 
-describe.only('DataStructure -- AVL Tree: \n', () => {
+describe('DataStructure -- AVL Tree: \n', () => {
   commonTest(AVLTree, ['search', 'traversal', 'insert', 'delete']);
 
   var tree;
