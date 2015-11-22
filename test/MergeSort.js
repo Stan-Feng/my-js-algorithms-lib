@@ -17,7 +17,7 @@ describe.only('Algorithm -- MergeSort \n', () => {
 	describe('Parameters -- Sort Array. \n', () => {
 		it('this funciton expect one arguments. \n', () => {
 			MergeSort.length.should.be.a('number');
-			MergeSort.length.should.equal(1);
+			MergeSort.length.should.equal(3);
 
 		});
 
@@ -38,8 +38,25 @@ describe.only('Algorithm -- MergeSort \n', () => {
 		});
 	});
 
-	describe('Base Case -- the smallest length of sub-array should be 1 \n', () => {
-	});
+  describe('Mock sort situation  \n', () => {
+    it('It should sort even number elements of array correctly \n', () => {
+      unsortedArr = [3, 2, 1];
+      MergeSort(unsortedArr);
+      unsortedArr.should.have.length(3);
+      unsortedArr[0].should.equal(1);
+      unsortedArr[1].should.equal(2);
+      unsortedArr[2].should.equal(3);
+    });
 
+    it('It should sort odd number elements of array correctly \n', () => {
+      unsortedArr = [4, 3, 2, 1];
+      MergeSort(unsortedArr);
+      unsortedArr.should.have.length(4);
+      unsortedArr[0].should.equal(1);
+      unsortedArr[1].should.equal(2);
+      unsortedArr[2].should.equal(3);
+      unsortedArr[3].should.equal(4);
+    });
+  });
 
 });
