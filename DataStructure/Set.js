@@ -14,13 +14,13 @@ function Set() {
 	let _size = 0;
 
 	this.add = function (item) {
-		if (this.has(item))
+		if (this.has(item)){
 			return {
 				isSuccess: false,
 				reason: 'Element already exists.'
 			};
-
-		_items[item] = item;
+		}
+				_items[item] = item;
 		_size++;
 		return {
 			isSuccess: true,
