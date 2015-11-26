@@ -10,53 +10,80 @@ describe.only('Algorithm -- MergeSort \n', () => {
 		unsortedArr = [];
 	});
 
-	it('should import correctly. \n', () => {
+	it('It should be imported for testing correctly. \n', () => {
 		MergeSort.should.be.a('function');
 	});
 
 	describe('Parameters -- Sort Array. \n', () => {
-		it('this funciton expect one arguments. \n', () => {
+		it('It should expect three arguments. \n', () => {
 			MergeSort.length.should.be.a('number');
 			MergeSort.length.should.equal(3);
-
 		});
 
-    it('should return error when passed in an invalid parameter', () => {
-      var result = MergeSort(2);
-      result.should.be.an('error');
-    });
+		it('It should return error when passed in an invalid parameter \n', () => {
+			var result = MergeSort(2);
+			result.should.be.an('error');
+		});
 
-		it('should return error when pass 0 parameter in. \n', () => {
+		it('It should return error when pass 0 parameter in. \n', () => {
 			var result = MergeSort();
 			result.should.be.an('error');
 		});
 
-		it('should return one length array to merge funciton as parameter \n', () => {
+		it('It should return one length array as base case \n', () => {
 			var result = MergeSort([1]);
 			result.should.be.an('array');
 			result.should.have.length(1);
 		});
 	});
 
-  describe('Mock sort situation  \n', () => {
-    it('It should sort even number elements of array correctly \n', () => {
-      unsortedArr = [3, 2, 1];
-      MergeSort(unsortedArr);
-      unsortedArr.should.have.length(3);
-      unsortedArr[0].should.equal(1);
-      unsortedArr[1].should.equal(2);
-      unsortedArr[2].should.equal(3);
-    });
+	describe('Bondary Situation: \n', () => {
+		it('It should return an empty array when it is given an empty array. \n', () => {
+			var result = MergeSort([]);
+			result.should.be.an('array');
+			result.should.have.length(0);
+		});
+	});
 
-    it('It should sort odd number elements of array correctly \n', () => {
-      unsortedArr = [4, 3, 2, 1];
+	describe('Mock sorting situation:  \n', () => {
+		it('It should sort odd number elements of array correctly \n', () => {
+			unsortedArr = [5, 4, 3, 2, 1];
+			MergeSort(unsortedArr);
+
+			unsortedArr.should.have.length(5);
+			unsortedArr[0].should.equal(1);
+			unsortedArr[1].should.equal(2);
+			unsortedArr[2].should.equal(3);
+			unsortedArr[3].should.equal(4);
+			unsortedArr[4].should.equal(5);
+		});
+
+		it('It should sort even number elements of array correctly \n', () => {
+			unsortedArr = [6, 5, 4, 3, 2, 1];
+			MergeSort(unsortedArr);
+
+			unsortedArr.should.have.length(6);
+			unsortedArr[0].should.equal(1);
+			unsortedArr[1].should.equal(2);
+			unsortedArr[2].should.equal(3);
+			unsortedArr[3].should.equal(4);
+			unsortedArr[4].should.equal(5);
+			unsortedArr[5].should.equal(6);
+		});
+
+		it('It should sort an array the smallest item in the end while'
+          +' biggiest item in the head. \n', () => {
+			unsortedArr = [422, 18, 9, 321, 2];
       MergeSort(unsortedArr);
-      unsortedArr.should.have.length(4);
-      unsortedArr[0].should.equal(1);
-      unsortedArr[1].should.equal(2);
-      unsortedArr[2].should.equal(3);
-      unsortedArr[3].should.equal(4);
-    });
-  });
+
+      console.log(unsortedArr);
+      unsortedArr.should.have.length(5);
+			unsortedArr[0].should.equal(2);
+			unsortedArr[1].should.equal(9);
+			unsortedArr[2].should.equal(18);
+			unsortedArr[3].should.equal(321);
+			unsortedArr[4].should.equal(422);
+		});
+	});
 
 });

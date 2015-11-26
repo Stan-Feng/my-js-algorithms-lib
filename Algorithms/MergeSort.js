@@ -13,16 +13,16 @@
 function MergeSort(unsortedArr, startIndex, endIndex) {
 	if (arguments.length !== 1 ||
 		!Array.isArray(unsortedArr)) return new Error("invalid parameters");
-	if (unsortedArr.length < 2) return unsortedArr;  //Base Case
 
 	startIndex = startIndex || 0;
 	endIndex = endIndex || unsortedArr.length;
 	var midIndex = Math.floor((startIndex + endIndex) / 2);
 
+	if (unsortedArr.length < 2) return unsortedArr;  //Base Case
+
 	MergeSort(unsortedArr, startIndex, midIndex);
 	MergeSort(unsortedArr, midIndex + 1, endIndex);
 
-	_merge(unsortedArr, startIndex, midIndex, endIndex);
 }
 
 
@@ -35,12 +35,13 @@ function MergeSort(unsortedArr, startIndex, endIndex) {
  * @return: void
  */
 function _merge(unsortedArr, startIndex, midIndex, endIndex) {
-	for (var i = startIndex; i <= midIndex; i++) {
+	for (var i = startIndex; i < midIndex; i++) {
 		for (var j = midIndex; j < endIndex; j++) {
 			//If left array element is greater than right one, swap it
 			if(unsortedArr[i] > unsortedArr[j]) {
 				_swap(unsortedArr, i, j);
 			}
+			console.log(unsortedArr);
 		}
 	}
 }

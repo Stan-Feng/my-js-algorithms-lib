@@ -13,3 +13,8 @@ Data Structure & Algorithms Written in JavaScript
 - Worst-case analysis, (average-case analysis & bench marks) require domain knowledge
 - Won't pay attention to constant factors, lower-order terms
 - Asymptotic analysis: focus on running time for large input size
+
+#### Asymptotic Analysis
+- High-level idea:
+  - Suppress const and factors (highly depend on env)
+  - lower-order terms (increasing relevant) for large input
