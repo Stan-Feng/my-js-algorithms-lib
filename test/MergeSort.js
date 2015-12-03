@@ -15,9 +15,9 @@ describe.only('Algorithm -- MergeSort \n', () => {
 	});
 
 	describe('Parameters -- Sort Array. \n', () => {
-		it('It should expect three arguments. \n', () => {
+		it('It should expect one arguments. \n', () => {
 			MergeSort.length.should.be.a('number');
-			MergeSort.length.should.equal(3);
+			MergeSort.length.should.equal(1);
 		});
 
 		it('It should return error when passed in an invalid parameter \n', () => {
@@ -76,7 +76,6 @@ describe.only('Algorithm -- MergeSort \n', () => {
 			unsortedArr = [422, 18, 9, 321, 2];
       MergeSort(unsortedArr);
 
-      console.log(unsortedArr);
       unsortedArr.should.have.length(5);
 			unsortedArr[0].should.equal(2);
 			unsortedArr[1].should.equal(9);
