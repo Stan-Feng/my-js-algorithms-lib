@@ -4,7 +4,7 @@ const expect = require('chai').expect;
 const MergeSort = require('../Algorithms/MergeSort');
 
 
-describe.only('Algorithm -- MergeSort \n', () => {
+describe('Algorithm -- MergeSort \n', () => {
 	var unsortedArr;
 	beforeEach(() => {
 		unsortedArr = [];

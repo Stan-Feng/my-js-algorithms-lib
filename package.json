@@ -12,7 +12,8 @@
     "mocha": "^2.3.3"
   },
   "scripts": {
-    "test": "mocha -w --compilers js:babel/register"
+    "test": "mocha -w --compilers js:babel/register",
+    "yolo": "git add --all && git commit -am \"$(date)\" && git push origin master --tags "
   },
   "repository": {
     "type": "git",
