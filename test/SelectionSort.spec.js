@@ -158,6 +158,28 @@ describe.only('BruteForce -- SelectionSort \n', () => {
       result[6].should.equal(9);
       result[7].should.equal(12);
 		});
+
+    it('It should sort example from book correctly. \n', () => {
+      arr.push(89);
+      arr.push(45);
+      arr.push(68);
+      arr.push(90);
+      arr.push(29);
+      arr.push(34);
+      arr.push(17);
+
+      var result = SelectionSort(arr);
+      result.should.be.an('array');
+      result.length.should.equal(7);
+
+      result[0].should.equal(17);
+      result[1].should.equal(29);
+      result[2].should.equal(34);
+      result[3].should.equal(45);
+      result[4].should.equal(68);
+      result[5].should.equal(89);
+      result[6].should.equal(90);
+    });
 	});
 
 });
