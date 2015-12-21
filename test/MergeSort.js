@@ -4,7 +4,7 @@ const expect = require('chai').expect;
 const MergeSort = require('../Algorithms/MergeSort');
 
 
-describe('Algorithm -- MergeSort \n', () => {
+describe.skip('Algorithm -- MergeSort \n', () => {
 	var unsortedArr;
 	beforeEach(() => {
 		unsortedArr = [];

@@ -1,48 +1,48 @@
 import chai from 'chai';
-import SelectionSort from '../Algorithms/BruteForce/SelectionSort';
+import BubbleSort from '../Algorithms/BruteForce/BubbleSort';
 
 const expect = chai.expect;
 const should = chai.should();
 
-describe('BruteForce -- SelectionSort \n', () => {
+describe('BruteForce -- BubbleSort \n', () => {
 	var arr;
 	beforeEach(() => {
 		arr = [];
 	});
 
-	describe('SelectionSort -- Parameters \n', () => {
+	describe('BubbleSort -- Parameters \n', () => {
 		it('It should import correctly. \n', () => {
-			SelectionSort.should.be.a('function');
+			BubbleSort.should.be.a('function');
 		});
 
 		it('It should accept one parameter. \n', () => {
-			SelectionSort.length.should.equal(1);
+			BubbleSort.length.should.equal(1);
 		});
 
 		it('It should accept an array as parameter, otherwise throw error. \n', () => {
-			var result = SelectionSort('hey');
+			var result = BubbleSort('hey');
 			result.should.be.an('error');
 		});
 
 		it('It should return the input array when it is empty or only contains one element. \n', () => {
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(0);
 
 			arr.push(1);
-			result = SelectionSort(arr);
+			result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(1);
 		});
 
 	});
 
-	describe('SelectionSort -- Correctness \n', () => {
+	describe('BubbleSort -- Correctness \n', () => {
 		it('It should sort two increasing array correctly. \n', () => {
 			arr.push(1);
 			arr.push(2);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(2);
 			result[0].should.equal(1);
@@ -53,7 +53,7 @@ describe('BruteForce -- SelectionSort \n', () => {
 			arr.push(2);
 			arr.push(1);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(2);
 			result[0].should.equal(1);
@@ -67,7 +67,7 @@ describe('BruteForce -- SelectionSort \n', () => {
 			arr.push(7);
 			arr.push(9);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(5);
 			result[0].should.equal(1);
@@ -84,7 +84,7 @@ describe('BruteForce -- SelectionSort \n', () => {
 			arr.push(3);
 			arr.push(1);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(5);
 
@@ -103,7 +103,7 @@ describe('BruteForce -- SelectionSort \n', () => {
 			arr.push(10);
 			arr.push(12);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(6);
 
@@ -123,7 +123,7 @@ describe('BruteForce -- SelectionSort \n', () => {
 			arr.push(4);
 			arr.push(2);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(6);
 
@@ -145,7 +145,7 @@ describe('BruteForce -- SelectionSort \n', () => {
 			arr.push(12);
 			arr.push(7);
 
-			var result = SelectionSort(arr);
+			var result = BubbleSort(arr);
 			result.should.be.an('array');
 			result.length.should.equal(8);
 
@@ -168,7 +168,7 @@ describe('BruteForce -- SelectionSort \n', () => {
       arr.push(34);
       arr.push(17);
 
-      var result = SelectionSort(arr);
+      var result = BubbleSort(arr);
       result.should.be.an('array');
       result.length.should.equal(7);
 
