@@ -1,12 +1,12 @@
 'use strict';
-//New Pattern of Creating Object -- Prototype Style
+//New Pattern of Creating Inheritance -- Prototype Style
 function Graph() {
   var adjList = {};
-  var vertices = [];
+  var vertexes = [];
 
   return {
     addVertex (v) {
-      vertices.push(v);
+      vertexes.push({symbol : v});
       adjList[v] = [];
     },
 
@@ -19,8 +19,8 @@ function Graph() {
       return Object.create(adjList);
     },
 
-    getVertices () {
-      return vertices.slice(); 
+    getVertexes () {
+      return vertexes;
     }
   };
 }
