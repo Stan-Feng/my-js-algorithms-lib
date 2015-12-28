@@ -2,11 +2,11 @@
 //New Pattern of Creating Inheritance -- Prototype Style
 function Graph() {
   var adjList = {};
-  var vertexes = [];
+  var vertexes = {};
 
   return {
     addVertex (v) {
-      vertexes.push({symbol : v});
+      vertexes[v] = {symbol: v};
       adjList[v] = [];
     },
 
@@ -16,7 +16,7 @@ function Graph() {
     },
 
     getAdjList () {
-      return Object.create(adjList);
+      return adjList;
     },
 
     getVertexes () {
@@ -24,6 +24,7 @@ function Graph() {
     }
   };
 }
+
 
 export default Graph;
 

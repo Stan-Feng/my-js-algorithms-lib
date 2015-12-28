@@ -1,61 +1,73 @@
 'use strict';
 /**
  * @name: DepthFirstSearch
- * @param: {Graph} graph = {V, E}
- * @return: {Graph} with its vertices marked with consecutive integers
- *            in the order they are first encountered by DFS traversal
- *            mark each vertex in V with 0 as a mark of being 'Unvisited'
+ * @param: {Graph} graph = {V, E}, {String} symbol
+ *  	After executed these code, the graph passed should be
+ *			marked with its vertices marked with consecutive integers
+ *      in the order they are first encountered by DFS traversal
+ *      mark each vertex in V with 0 as a mark of being 'Unvisited'
+ * @return: {Boolean} -- Whether the input symbol found in the graph
  */
-export default DepthFirstSearch;
+export default (function () {
+	var attrs;
+	var count = 0;
 
-function DepthFirstSearch(graph) {
-	if (!graph || typeof (graph) !== 'object') {
-		return new Error('Invalid Input');
-	}
+	var helpers = {
+		depthFirstSearch (vertex) {
+			var adjSymbols = attrs.adjList[vertex.symbol];
 
-  var adjList = graph.getAdjList();
-	var vertexes = graph.getVertexes();
+			vertex.count = count;
+			count += 1;
+			vertex.isMarked = true;
 
-	__markInitialize();
+			if(!this.isAdjMarked(adjSymbols)){
+				console.log('Adj not mark');
+				adjSymbols.forEach(symbol => {
+					this.depthFirstSearch(attrs.vertexes[symbol]);
+				});
+			}
+			else {
+				console.log('Adj marked.');
+				return;
+			}
 
-  __dfsTraverse(vertexes[0]);
+		},
 
-	return graph;
+		isAdjMarked (adjSymbols) {
+			adjSymbols.forEach(symbol => {
+				if(!attrs.vertexes[symbol].isMarked) {
+					console.log('hey');
+					return false;
+				}
+			});
+			console.log('here');
+			return true;
+		}
+	};
 
-  function __markInitialize() {
-  	vertexes.forEach((vertex) => {
-  		vertex.isMarked = false;
-  	});
-  }
+	return function (graph, targetSymbol) {
+		if (!graph || typeof (graph) !== 'object') {
+			return new Error('Invalid Input');
+		}
 
-  function __isDeepest(vertex) {
-    var adjVertexes = adjList[vertex.symbol];
-    //@Continue: Change the data structure
-    adjVertexes.forEach( vertex => {
-      if(!vertex.isMarked){
-        return false;
-      }
-      console.log(vertex);
-    });
-    return true;
-  }
+		attrs = {
+			graph,
+			targetSymbol,
+			adjList: graph.getAdjList(),
+			vertexes: graph.getVertexes()
+		};
 
-  function __dfsTraverse(thisVertex) {
-  	if (__isDeepest(thisVertex)) {
-  		thisVertex.isMarked = true;
-  		return;
-  	}
+		//Mark all vertex as unvisited
+		for (var symbol in attrs.vertexes) {
+			if (attrs.vertexes.hasOwnProperty(symbol)) {
+				if (!attrs.root) {
+					attrs.root = attrs.vertexes[symbol];
+				}
+				attrs.vertexes[symbol].isMarked = false;
+			}
+		}
+		//**************Correct Above***********************
 
-  	var adjVertexes = adjList[thisVertex.symbol];
-  	adjVertexes.forEach(vertex => {
-      if(!vertex.isMarked) {
-        vertex.isMarked = true;
-      }
-      else {
-        return;
-      }
-  		__dfsTraverse(vertex);
-  	});
-  }
-}
-
+		return helpers.depthFirstSearch(attrs.root);
+	};
+}());

@@ -33,8 +33,8 @@ describe.only('BruteForce -- DepthFirstSearch: \n', () => {
       DepthFirstSearch.should.be.a('function');
     });
 
-    it('It should accept one parameter. \n', () => {
-      DepthFirstSearch.length.should.equal(1);
+    it('It should accept two parameter. \n', () => {
+      DepthFirstSearch.length.should.equal(2);
     });
 
     it('It should return error when passed invalid input. \n', () => {
@@ -48,41 +48,40 @@ describe.only('BruteForce -- DepthFirstSearch: \n', () => {
 
   describe('DepthFirstSearch -- Functional Test: \n', () => {
     it('It should mark all vertexes as unvisited for given graph. \n', () => {
-      graph = DepthFirstSearch(graph);
+      DepthFirstSearch(graph, 'C');
 
       var vertexes = graph.getVertexes();
-      vertexes.should.be.an('array');
-      vertexes.should.have.length(9);
+      vertexes.should.be.an('object');
 
-      // vertexes.forEach( vertex => {
-      //   vertex.should.be.an('object');
-      //   vertex.should.have.property('symbol');
-      //   vertex.should.have.property('isMarked');
-      //   vertex.isMarked.should.be.false;
-      // });
+      // for (var symbol in vertexes) {
+      //   if (vertexes.hasOwnProperty(symbol)) {
+      //     vertexes[symbol].should.be.an('object');
+      //     vertexes[symbol].should.have.property('symbol');
+      //     vertexes[symbol].isMarked.should.be.false;
+      //   }
+      // }
+
     });
 
     it('It should mark all vertexes after traversed. \n', () => {
-      graph = DepthFirstSearch(graph);
+      DepthFirstSearch(graph);
 
       var vertexes = graph.getVertexes();
+      // console.log(vertexes);
+      for (var symbol in vertexes) {
+        if (vertexes.hasOwnProperty(symbol)) {
+          vertexes[symbol].should.be.an('object');
+          vertexes[symbol].should.have.property('symbol');
+          vertexes[symbol].isMarked.should.be.true;
+        }
+      }
 
-      vertexes.forEach(vertex => {
-        // console.log(vertex);
-      });
-
-      vertexes.forEach( vertex => {
-        vertex.should.be.an('object');
-        vertex.should.have.property('isMarked');
-        vertex.isMarked.should.be.true;
-      });
     });
 
-    it('It should check whether it is in the bottom of the graph. \n', () => {
-      graph = DepthFirstSearch(graph);
-
-      // graph
-    });
+    // it('It should return null when there is no matched symbol. \n', () => {
+    //   var result = DepthFirstSearch(graph, 'Z');
+    //   result.should.be.false;
+    // });
   });
 
 });

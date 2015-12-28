@@ -22,13 +22,12 @@ describe('DataStructure -- Graph  \n', () => {
       list.A.should.have.length(0);
       list.B.should.have.length(0);
 
-      var vertices = graph.getVertexes();
-      vertices.should.be.an('array');
-      vertices.should.have.length(2);
-      vertices[0].should.be.an('object');
-      vertices[1].should.be.an('object');
-      vertices[0].symbol.should.equal('A');
-      vertices[1].symbol.should.equal('B');
+      var vertexes = graph.getVertexes();
+      vertexes.should.be.an('object');
+      vertexes['A'].should.be.an('object');
+      vertexes['B'].should.be.an('object');
+      vertexes['A'].symbol.should.equal('A');
+      vertexes['B'].symbol.should.equal('B');
     });
 
     it('It should add edge correctly. \n', () => {
