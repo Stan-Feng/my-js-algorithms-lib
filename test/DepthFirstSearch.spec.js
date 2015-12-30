@@ -1,12 +1,12 @@
 'use strict';
 import chai from 'chai';
-import Graph from '../DataStructure/Graph';
+import Graph from '../DataStructure/UndirectedGraph';
 import DepthFirstSearch from '../Algorithms/BruteForce/DepthFirstSearch';
 
 const should = chai.should();
 const expect = chai.expect;
 
-describe.only('BruteForce -- DepthFirstSearch: \n', () => {
+describe('BruteForce -- DepthFirstSearch: \n', () => {
   var graph;
   const vertexSymbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 

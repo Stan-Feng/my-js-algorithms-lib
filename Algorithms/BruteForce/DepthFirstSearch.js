@@ -15,15 +15,20 @@ export default (function () {
 	var helpers = {
 		depthFirstSearch (vertex) {
 			var adjSymbols = attrs.adjList[vertex.symbol];
+			var unmarkedVertexes = this.getUnmarkedAdj(adjSymbols);
 
 			vertex.count = count;
 			count += 1;
 			vertex.isMarked = true;
 
-			if(!this.isAdjMarked(adjSymbols)){
-				console.log('Adj not mark');
-				adjSymbols.forEach(symbol => {
-					this.depthFirstSearch(attrs.vertexes[symbol]);
+			if(unmarkedVertexes.length > 0){
+				adjSymbols.map(symbol => {
+					var unmarkedAdjSymbols = this.getUnmarkedAdj(attrs.adjList[symbol]);
+					console.log(unmarkedAdjSymbols);
+					this.depthFirstSearch(attrs.vertexes['E']);
+					// return unmarkedAdjSymbols.forEach(unmarkedSymbol => {
+					// 	this.depthFirstSearch(attrs.vertexes[symbol]);
+					// });
 				});
 			}
 			else {
@@ -33,15 +38,12 @@ export default (function () {
 
 		},
 
-		isAdjMarked (adjSymbols) {
-			adjSymbols.forEach(symbol => {
+		getUnmarkedAdj (adjSymbols) {
+			return adjSymbols.filter(symbol => {
 				if(!attrs.vertexes[symbol].isMarked) {
-					console.log('hey');
-					return false;
+					return symbol;
 				}
 			});
-			console.log('here');
-			return true;
 		}
 	};
 
