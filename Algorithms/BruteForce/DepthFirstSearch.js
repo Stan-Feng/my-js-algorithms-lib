@@ -8,6 +8,48 @@
  *      mark each vertex in V with 0 as a mark of being 'Unvisited'
  * @return: {Boolean} -- Whether the input symbol found in the graph
  */
+
+export default (function () {
+	var vertices;
+
+	return function (graph, target) {
+		if (!graph || !target) {
+			return new Error('Invalid Input.');
+		}
+
+		//Mark all vertice unvisited
+		vertices = graph.getVertices().map(vertice => {
+			var newVertice = Object.create(null);
+
+			newVertice.isMarked = false;
+			newVertice.symbol = vertice;
+			newVertice[vertice] = vertice;
+			return newVertice;
+		});
+		__search(graph, vertices[0]);
+	};
+
+	function __search(graph, startVertice) {
+		startVertice.isMarked = true;
+		var adjVertices = graph.getAdjVertices(startVertice.symbol);
+		console.log(vertices);
+		console.log(adjVertices);
+		//@Continue: search deeper
+		adjVertices.forEach(adjVertice => {
+			if(!vertices[adjVertice].isMarked) {
+				__search(graph, vertices[adjVertice]);
+			}
+		});
+
+		return;
+	}
+
+	function __isMarked(vertice) {
+		// body...
+	}
+}());
+
+/**
 export default (function () {
 	var attrs;
 	var count = 0;
@@ -73,3 +115,4 @@ export default (function () {
 		return helpers.depthFirstSearch(attrs.root);
 	};
 }());
+*/

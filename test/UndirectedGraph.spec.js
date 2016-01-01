@@ -4,7 +4,7 @@ import Graph from '../DataStructure/UndirectedGraph';
 
 const should = chai.should();
 
-describe.only('DataStructure -- Graph  \n', () => {
+describe('DataStructure -- Graph  \n', () => {
   var graph;
   var vertices;
 
