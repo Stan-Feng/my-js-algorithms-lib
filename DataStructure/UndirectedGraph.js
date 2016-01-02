@@ -16,6 +16,9 @@ function UndirectedGraph(vertices = []) {
 
 	return {
     addVertice (e) {
+      if(adjList[e]) {
+        return new Error('Vertice exists.');
+      }
       vertices.push(e);
       adjList[e] = [];
     },

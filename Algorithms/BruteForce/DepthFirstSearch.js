@@ -10,109 +10,50 @@
  */
 
 export default (function () {
-	var vertices;
+	var __root;
+	var __graph;
+	var __target;
+	var __vertices = {};
 
 	return function (graph, target) {
 		if (!graph || !target) {
 			return new Error('Invalid Input.');
 		}
 
+		__graph = graph;
+		__target = target;
+
 		//Mark all vertice unvisited
-		vertices = graph.getVertices().map(vertice => {
-			var newVertice = Object.create(null);
-
-			newVertice.isMarked = false;
-			newVertice.symbol = vertice;
-			newVertice[vertice] = vertice;
-			return newVertice;
+		__graph.getVertices().forEach(vertice => {
+			__vertices[vertice] = {
+				isMarked: false,
+				symbol: vertice
+			};
+			if(!__root) {
+				__root = __vertices[vertice];
+			}
 		});
-		__search(graph, vertices[0]);
+
+		return __search(__root);
 	};
 
-	function __search(graph, startVertice) {
+	function __search(startVertice) {
 		startVertice.isMarked = true;
-		var adjVertices = graph.getAdjVertices(startVertice.symbol);
-		console.log(vertices);
-		console.log(adjVertices);
-		//@Continue: search deeper
-		adjVertices.forEach(adjVertice => {
-			if(!vertices[adjVertice].isMarked) {
-				__search(graph, vertices[adjVertice]);
-			}
-		});
+		if(startVertice.symbol === __target) {
+			return true;
+		}
 
-		return;
+		var adjVertices = __graph.getAdjVertices(startVertice.symbol);
+
+		for (var i = 0; i < adjVertices.length; i++) {
+			if(!__vertices[adjVertices[i]].isMarked) {
+				if(__search(__vertices[adjVertices[i]])) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
-	function __isMarked(vertice) {
-		// body...
-	}
 }());
-
-/**
-export default (function () {
-	var attrs;
-	var count = 0;
-
-	var helpers = {
-		depthFirstSearch (vertex) {
-			var adjSymbols = attrs.adjList[vertex.symbol];
-			var unmarkedVertexes = this.getUnmarkedAdj(adjSymbols);
-
-			vertex.count = count;
-			count += 1;
-			vertex.isMarked = true;
-
-			if(unmarkedVertexes.length > 0){
-				adjSymbols.map(symbol => {
-					var unmarkedAdjSymbols = this.getUnmarkedAdj(attrs.adjList[symbol]);
-					console.log(unmarkedAdjSymbols);
-					this.depthFirstSearch(attrs.vertexes['E']);
-					// return unmarkedAdjSymbols.forEach(unmarkedSymbol => {
-					// 	this.depthFirstSearch(attrs.vertexes[symbol]);
-					// });
-				});
-			}
-			else {
-				console.log('Adj marked.');
-				return;
-			}
-
-		},
-
-		getUnmarkedAdj (adjSymbols) {
-			return adjSymbols.filter(symbol => {
-				if(!attrs.vertexes[symbol].isMarked) {
-					return symbol;
-				}
-			});
-		}
-	};
-
-	return function (graph, targetSymbol) {
-		if (!graph || typeof (graph) !== 'object') {
-			return new Error('Invalid Input');
-		}
-
-		attrs = {
-			graph,
-			targetSymbol,
-			adjList: graph.getAdjList(),
-			vertexes: graph.getVertexes()
-		};
-
-		//Mark all vertex as unvisited
-		for (var symbol in attrs.vertexes) {
-			if (attrs.vertexes.hasOwnProperty(symbol)) {
-				if (!attrs.root) {
-					attrs.root = attrs.vertexes[symbol];
-				}
-				attrs.vertexes[symbol].isMarked = false;
-			}
-		}
-		//**************Correct Above***********************
-
-		return helpers.depthFirstSearch(attrs.root);
-	};
-}());
-*/

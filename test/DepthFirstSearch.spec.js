@@ -7,28 +7,8 @@ const should = chai.should();
 const expect = chai.expect;
 
 describe.only('BruteForce -- DepthFirstSearch: \n', () => {
-  var graph;
-  const vertexSymbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-
-  beforeEach(() => {
-    graph = Graph();
-    vertexSymbol.forEach( symbol => {
-      graph.addVertice(symbol);
-    });
-
-    graph.addEdge('A', 'B');
-    graph.addEdge('A', 'C');
-    graph.addEdge('A', 'D');
-    graph.addEdge('B', 'E');
-    graph.addEdge('B', 'F');
-    graph.addEdge('C', 'D');
-    graph.addEdge('C', 'G');
-    graph.addEdge('D', 'G');
-    graph.addEdge('D', 'H');
-    graph.addEdge('E', 'I');
-  });
-
   describe('DepthFirstSearch -- Non-functional Test: \n', () => {
+    var graph = Graph();
     it('It should import successfully. \n', () => {
       DepthFirstSearch.should.be.a('function');
     });
@@ -47,25 +27,74 @@ describe.only('BruteForce -- DepthFirstSearch: \n', () => {
   });
 
   describe('DepthFirstSearch -- Functional Test: \n', () => {
-    it('It should mark all vertexes after traversed. \n', () => {
-      DepthFirstSearch(graph, 'C');
+    var graph;
+    const vertexSymbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
-      // var vertexes = graph.getVertexes();
-      // console.log(vertexes);
-      // for (var symbol in vertexes) {
-      //   if (vertexes.hasOwnProperty(symbol)) {
-      //     vertexes[symbol].should.be.an('object');
-      //     vertexes[symbol].should.have.property('symbol');
-      //     vertexes[symbol].isMarked.should.be.true;
-      //   }
-      // }
-      //
+    beforeEach(() => {
+      graph = Graph();
+      vertexSymbol.forEach( symbol => {
+        graph.addVertice(symbol);
+      });
+
+      graph.addEdge('A', 'B');
+      graph.addEdge('A', 'C');
+      graph.addEdge('A', 'D');
+      graph.addEdge('B', 'E');
+      graph.addEdge('B', 'F');
+      graph.addEdge('C', 'D');
+      graph.addEdge('C', 'G');
+      graph.addEdge('D', 'G');
+      graph.addEdge('D', 'H');
+      graph.addEdge('E', 'I');
     });
 
-    // it('It should return null when there is no matched symbol. \n', () => {
-    //   var result = DepthFirstSearch(graph, 'Z');
-    //   result.should.be.false;
-    // });
+    var successTests = [
+      { input: 'B', output: true },
+      { input: 'C', output: true },
+      { input: 'D', output: true },
+      { input: 'E', output: true },
+      { input: 'F', output: true },
+      { input: 'G', output: true },
+      { input: 'H', output: true },
+      { input: 'I', output: true }
+    ];
+
+    var failureTests = [
+      { input: 1, output: false },
+      { input: 'JL', output: false },
+      { input: {}, output: false },
+      { input: [], output: false },
+      { input: 'M', output: false }
+    ];
+
+    it('It should return false when there is no matched symbol. \n', () => {
+      var result = DepthFirstSearch(graph, 'Z');
+      result.should.be.false;
+    });
+
+    it('It should return true when target is root. \n', () => {
+      var result = DepthFirstSearch(graph, 'A');
+      result.should.be.true;
+    });
+
+    successTests.forEach(test => {
+      it('It should return true when input is ' + test.input + '. \n', () => {
+        var result = DepthFirstSearch(graph, test.input);
+        result.should.be.a('boolean');
+        result.should.be.true;
+        result.should.equal(true);
+      });
+    });
+
+    failureTests.forEach(test => {
+      it('It should return false when input is ' + test.input + '. \n', () => {
+        var result = DepthFirstSearch(graph, test.input);
+        result.should.be.a('boolean');
+        result.should.be.false;
+        result.should.equal(false);
+      });
+    });
+
   });
 
 });
