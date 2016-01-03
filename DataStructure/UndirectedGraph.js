@@ -29,6 +29,10 @@ function UndirectedGraph(vertices = []) {
       edgeNum++;
     },
 
+    hasPath (v1, v2) {
+
+    },
+
     getAdjVertices (v) {
       return adjList[v];
     },

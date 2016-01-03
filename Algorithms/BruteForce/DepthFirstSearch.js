@@ -19,41 +19,50 @@ export default (function () {
 		if (!graph || !target) {
 			return new Error('Invalid Input.');
 		}
+		else {
+			__graph = graph;
+			__target = target;
 
-		__graph = graph;
-		__target = target;
+			//Mark all vertice unvisited
+			__graph.getVertices().forEach(vertice => {
+				__vertices[vertice] = {
+					isMarked: false,
+					symbol: vertice
+				};
+				if(!__root) {
+					__root = __vertices[vertice];
+				}
+			});
 
-		//Mark all vertice unvisited
-		__graph.getVertices().forEach(vertice => {
-			__vertices[vertice] = {
-				isMarked: false,
-				symbol: vertice
-			};
-			if(!__root) {
-				__root = __vertices[vertice];
-			}
-		});
-
-		return __search(__root);
+			return __search(__root);
+		}
 	};
 
-	function __search(startVertice) {
-		startVertice.isMarked = true;
-		if(startVertice.symbol === __target) {
+	function __search(startV) {
+		startV.isMarked = true;
+
+		if(startV.symbol === __target) {
 			return true;
 		}
-
-		var adjVertices = __graph.getAdjVertices(startVertice.symbol);
-
-		for (var i = 0; i < adjVertices.length; i++) {
-			if(!__vertices[adjVertices[i]].isMarked) {
-				if(__search(__vertices[adjVertices[i]])) {
-					return true;
+		else {
+			var adjs = __graph.getAdjVertices(startV.symbol);
+			for (let i = 0; i < adjs.length; i++) {
+				let v = __vertices[adjs[i]];
+				if(!v.isMarked) {
+					if(__search(v)) {
+						return true;
+					}
+					else {
+						// console.log('Can not find target '+ __target +' in this path.');
+					}
+				}
+				else {
+					// console.log('Skip vertice ' + v.symbol);
 				}
 			}
-		}
 
-		return false;
+			return false;
+		}
 	}
 
 }());
