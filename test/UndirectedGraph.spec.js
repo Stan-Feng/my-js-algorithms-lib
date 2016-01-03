@@ -1,15 +1,63 @@
 'use strict';
 import chai from 'chai';
-import Graph from '../DataStructure/UndirectedGraph';
+import Graph from "../DataStructure/UndirectedGraph";
 
 const should = chai.should();
+describe('DataStructure -- OLLO pattern Graph \n', () => {
+  it('It should import successfully. \n', () => {
+    Graph.should.be.an('object');
+  });
+
+  it('It should have method to create new instances. \n', () => {
+    Graph.createInstance.should.be.a('function');
+    var graph1 = Graph.createInstance();
+    graph1.should.be.an('object');
+
+    var graph2 = Graph.createInstance();
+    graph2.should.be.an('object');
+
+    var isSame = (graph1 === graph2);
+    isSame.should.be.false;
+  });
+
+  it('It should add vertice correctly. \n', () => {
+    var graph = Graph.createInstance();
+    graph.addVertice('A');
+    graph.addVertice('B');
+    graph.addVertice('C');
+
+    var vertices = graph.getVertices();
+    vertices.should.be.an('array');
+    vertices.should.have.length(3);
+
+    vertices[0].should.equal('A');
+    vertices[1].should.equal('B');
+    vertices[2].should.equal('C');
+
+    var adjList = graph.getAdjList();
+    adjList.should.be.an('object');
+
+    adjList.should.have.property('A');
+    adjList['A'].should.be.an('array');
+    adjList['A'].should.have.length(0);
+
+    adjList.should.have.property('B');
+    adjList['B'].should.be.an('array');
+    adjList['B'].should.have.length(0);
+
+    adjList.should.have.property('C');
+    adjList['C'].should.be.an('array');
+    adjList['C'].should.have.length(0);
+  });
+});
+
 
 describe('DataStructure -- Graph  \n', () => {
   var graph;
   var vertices;
 
   beforeEach(() => {
-    graph = Graph();
+    graph = Graph.createInstance();
     graph.addVertice('A');
     graph.addVertice('B');
     graph.addVertice('C');
@@ -48,25 +96,17 @@ describe('DataStructure -- Graph  \n', () => {
     });
 
     it('It should add edge correctly. \n', () => {
-      graph.addVertice('A');
-      graph.addVertice('B');
-      graph.addEdge('A', 'B');
-
       var adjList = graph.getAdjList();
-      adjList.should.have.property('A');
-      adjList.should.have.property('B');
-      adjList['A'].should.be.an('array');
-      adjList['B'].should.be.an('array');
 
-      adjList['A'].should.have.length(1);
-      adjList['B'].should.have.length(1);
+      adjList['A'].should.have.length(2);
+      adjList['B'].should.have.length(2);
 
       adjList['A'][0].should.equal('B');
       adjList['B'][0].should.equal('A');
 
       var adjVertices = graph.getAdjVertices('A');
       adjVertices.should.be.an('array');
-      adjVertices.should.have.length(1);
+      adjVertices.should.have.length(2);
       adjVertices[0].should.equal('B');
     });
 
@@ -94,5 +134,4 @@ describe('DataStructure -- Graph  \n', () => {
       });
     });
   });
-
 });

@@ -9,47 +9,41 @@
  * @method: addVertice(v) --> Add new vertice to graph
  */
 //New Pattern of Creating Inheritance -- Prototype Style
-function UndirectedGraph(vertices = []) {
-	var edgeNum = 0;
-	var adjList = {};
-  var vertices = [];
+export default (function() {
+   return {
+     createInstance () {
+       var g = Object.create(this);
+       g.adjList = {};
+       g.vertices = [];
+       return g;
+     },
 
-	return {
-    addVertice (e) {
-      if(adjList[e]) {
-        return new Error('Vertice exists.');
-      }
-      vertices.push(e);
-      adjList[e] = [];
-    },
+     addEdge (e, v) {
+       this.adjList[e].push(v);
+       this.adjList[v].push(e);
+     },
 
-    addEdge (e, v) {
-      adjList[e].push(v);
-      adjList[v].push(e);
-      edgeNum++;
-    },
+     addVertice (e) {
+       if(this.adjList[e]) {
+         return new Error('Vertices already exists');
+       }
+       else {
+         this.vertices.push(e);
+         this.adjList[e] = [];
+       }
+     },
 
-    hasPath (v1, v2) {
+     getAdjVertices (v) {
+       return this.adjList[v];
+     },
 
-    },
+     getVertices () {
+       return this.vertices;
+     },
 
-    getAdjVertices (v) {
-      return adjList[v];
-    },
+     getAdjList () {
+       return this.adjList;
+     }
+   };
+}());
 
-		getEdgeNum() {
-			return edgeNum;
-		},
-
-		getAdjList() {
-			return adjList;
-		},
-
-		getVertices() {
-			return vertices;
-		}
-	};
-}
-
-
-export default UndirectedGraph;

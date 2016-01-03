@@ -6,9 +6,9 @@ import DepthFirstSearch from '../Algorithms/BruteForce/DepthFirstSearch';
 const should = chai.should();
 const expect = chai.expect;
 
-describe.only('BruteForce -- DepthFirstSearch: \n', () => {
+describe('BruteForce -- DepthFirstSearch: \n', () => {
   describe('DepthFirstSearch -- Non-functional Test: \n', () => {
-    var graph = Graph();
+    var graph = Graph.createInstance();
     it('It should import successfully. \n', () => {
       DepthFirstSearch.should.be.a('function');
     });
@@ -31,7 +31,7 @@ describe.only('BruteForce -- DepthFirstSearch: \n', () => {
     const vertexSymbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
     beforeEach(() => {
-      graph = Graph();
+      graph = Graph.createInstance();
       vertexSymbol.forEach( symbol => {
         graph.addVertice(symbol);
       });
