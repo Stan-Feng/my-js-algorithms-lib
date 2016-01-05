@@ -49,7 +49,8 @@ export default (function () {
 			for (let i = 0; i < adjs.length; i++) {
 				let v = __vertices[adjs[i]];
 				if(!v.isMarked) {
-					if(__search(v)) {
+					let isFound = __search(v);
+					if(isFound) {
 						return true;
 					}
 					else {

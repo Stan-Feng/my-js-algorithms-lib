@@ -15,6 +15,7 @@ export default (function() {
        var g = Object.create(this);
        g.adjList = {};
        g.vertices = [];
+       
        return g;
      },
 
