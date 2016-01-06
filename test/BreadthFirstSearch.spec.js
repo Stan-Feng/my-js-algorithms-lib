@@ -49,17 +49,17 @@ describe.only('BruteForce -- BreadthFirstSearch  \n', () => {
       paths.should.have.property('C');
       paths.should.have.property('D');
       paths.should.have.property('E');
-      
+
       paths['root'].should.equal('A');
       paths['B'].should.be.an('array');
       paths['C'].should.be.an('array');
       paths['D'].should.be.an('array');
       paths['E'].should.be.an('array');
 
-      paths['B'].parent.should.equal('A');
-      paths['C'].parent.should.equal('A');
-      paths['D'].parent.should.equal('C');
-      paths['E'].parent.should.equal('D');
+      paths['B'].should.have.length(2);
+      paths['C'].should.have.length(2);
+      paths['D'].should.have.length(3);
+      paths['E'].should.have.length(4);
 
     });
 

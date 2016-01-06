@@ -34,12 +34,14 @@ export default (function() {
       });
 
       // Assume the first element in __vertices is the root
+      __paths['root'] = root;
       __root = __vertices[root];
       __root.parent = 'root';
       __root.isMarked = true;
 
       __breadthTraverse(__root);
-      // console.log(__vertices);
+
+      console.log(__paths);
       return __paths;
     }
   };
@@ -47,9 +49,7 @@ export default (function() {
   function __breadthTraverse(startV) {
     if(startV.parent !== 'root') {
       __paths[startV.symbol] = [];
-    }
-    else {
-      __paths['root'] = startV.symbol;
+      __findPath(startV, __paths[startV.symbol]);
     }
 
     var nextSymbols = __filterVertices(startV);
@@ -80,6 +80,19 @@ export default (function() {
           return v;
         }
       });
+    }
+  }
+
+  function __findPath(vertice, path) {
+    var parentSymbol = vertice.parent;
+
+    if(parentSymbol !== 'root') {
+      path.unshift(vertice.symbol);
+      __findPath(__vertices[parentSymbol], path);
+    }
+    else {
+      path.unshift('root');
+      return;
     }
   }
 
