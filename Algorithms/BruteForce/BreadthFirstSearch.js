@@ -41,7 +41,6 @@ export default (function() {
 
       __breadthTraverse(__root);
 
-      console.log(__paths);
       return __paths;
     }
   };
@@ -97,13 +96,3 @@ export default (function() {
   }
 
 }());
-
-
-
-
-
-
-
-
-
-

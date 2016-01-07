@@ -28,6 +28,9 @@ describe.only('BruteForce -- BreadthFirstSearch  \n', () => {
     var graph;
     beforeEach(() => {
       graph = Graph.createInstance();
+    });
+
+    it('It should return correct path data structure. \n', () => {
       graph.addVertice('A');
       graph.addVertice('B');
       graph.addVertice('C');
@@ -38,9 +41,7 @@ describe.only('BruteForce -- BreadthFirstSearch  \n', () => {
       graph.addEdge('A', 'C');
       graph.addEdge('C', 'D');
       graph.addEdge('D', 'E');
-    });
 
-    it('It should return correct path data structure. \n', () => {
       var paths = breadthFirstSearch(graph);
 
       paths.should.be.an('object');
@@ -61,8 +62,51 @@ describe.only('BruteForce -- BreadthFirstSearch  \n', () => {
       paths['D'].should.have.length(3);
       paths['E'].should.have.length(4);
 
+      paths['B'][1].should.equal('B');
+      paths['C'][1].should.equal('C');
+
+      paths['D'][1].should.equal('C');
+      paths['D'][2].should.equal('D');
+
+      paths['E'][1].should.equal('C');
+      paths['E'][2].should.equal('D');
+      paths['E'][3].should.equal('E');
     });
 
+    it('It should return correct path in a more complex case. \n', () => {
+      const vertexSymbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+      graph = Graph.createInstance();
+      vertexSymbol.forEach( symbol => {
+        graph.addVertice(symbol);
+      });
+
+      graph.addEdge('A', 'B');
+      graph.addEdge('A', 'C');
+      graph.addEdge('A', 'D');
+      graph.addEdge('B', 'E');
+      graph.addEdge('B', 'F');
+      graph.addEdge('C', 'D');
+      graph.addEdge('C', 'G');
+      graph.addEdge('D', 'G');
+      graph.addEdge('D', 'H');
+      graph.addEdge('E', 'I');
+
+      var paths = breadthFirstSearch(graph);
+
+      paths['I'].should.have.length(4);
+      paths['I'][3].should.equal('I');
+      paths['I'][2].should.equal('E');
+      paths['I'][1].should.equal('B');
+
+      paths['E'].should.have.length(3);
+      paths['E'][2].should.equal('E');
+      paths['E'][1].should.equal('B');
+
+
+      paths['G'].should.have.length(3);
+      paths['G'][2].should.equal('G');
+      paths['G'][1].should.equal('C');
+    });
   });
 
 });
