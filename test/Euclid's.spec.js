@@ -1,7 +1,6 @@
-const expect = require('chai').expect;
-const should = require('chai').should();
-
-import gcd from '../Algorithms/Euclid\'s.js';
+import chai from 'chai';
+const should = chai.should();
+import gcd from '../Algorithms/DecreaseConquer/Euclid\'s.js';
 
 describe('Euclid\'s Algorithm -- Find the largest division: \n', () => {
 

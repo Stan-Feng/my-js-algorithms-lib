@@ -17,7 +17,7 @@
  * @finiedAt:
  */
 
-function LinkedList() {
+export default function LinkedList() {
 	class _Node {
 		constructor(element) {
 			this.element = element;
@@ -182,5 +182,3 @@ function LinkedList() {
 	};
 
 }
-
-module.exports = LinkedList;

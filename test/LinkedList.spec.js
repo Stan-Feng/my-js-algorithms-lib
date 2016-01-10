@@ -1,10 +1,10 @@
 //Date: Thu Oct 15 2015 15:24:53 GMT+0800 (CST)
 'use strict';
-const should = require('chai').should();
-const expect = require('chai').expect;
-const listPath = '../DataStructure/LinkedList';
-var LinkedList = require(listPath);
+import chai from 'chai';
+const should = chai.should();
+const expect = chai.expect;
 
+import LinkedList from '../DataStructure/LinkedList';
 
 describe('DataStructure -- LinkedList: \n', () => {
 

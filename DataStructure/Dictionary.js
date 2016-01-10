@@ -1,6 +1,6 @@
 'use strict';
 
-function Dictionary() {
+export default function Dictionary() {
   var _items = {};
   var _size = 0;
 
@@ -80,4 +80,3 @@ function Dictionary() {
 }
 
 
-module.exports = Dictionary;

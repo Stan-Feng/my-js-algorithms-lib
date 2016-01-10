@@ -1,6 +1,8 @@
 'use strict';
-const should = require('chai').should();
-const expect = require('chai').expect;
+import chai from 'chai';
+const should = chai.should();
+const expect = chai.expect;
+
 const commonTest = require('./common.spec');
 const AVLTree= require('../DataStructure/AVLTree');
 

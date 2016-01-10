@@ -190,4 +190,4 @@ function BinarySearchTree() {
 
 }
 
-module.exports = BinarySearchTree;
+export default BinarySearchTree;

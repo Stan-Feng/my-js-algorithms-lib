@@ -12,7 +12,7 @@
  * @method: clear --> Clear the whole queue
  */
 
-function Queue(data){
+export default function Queue(data){
     //Properties and method go here
 
     var items = [];
@@ -43,7 +43,3 @@ function Queue(data){
    };
 
 }
-
-module.exports = function(data){
-    return new Queue(data);
-};

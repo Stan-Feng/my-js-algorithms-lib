@@ -1,9 +1,9 @@
 'use strict';
-
-import { should } from 'chai';
-import { expect } from 'chai';
+import chai from 'chai';
 import Set from '../DataStructure/Set';
 import commonTest from './common.spec';
+
+const expect = chai.expect;
 
 describe('DataStructure -- Set: \n', () => {
   commonTest(Set, ['add', 'remove', 'has', 'clear', 'size', 'values',

@@ -1,7 +1,8 @@
-const should = require('chai').should();
-const expect = require('chai').expect;
+import chai from 'chai';
+const should = chai.should();
+const expect = chai.expect;
 
-const MergeSort = require('../Algorithms/MergeSort');
+import MergeSort from '../Algorithms/MergeSort';
 
 
 describe.skip('Algorithm -- MergeSort \n', () => {

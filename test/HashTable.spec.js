@@ -1,9 +1,11 @@
 'use strict';
-const should = require('chai').should();
-const expect = require('chai').expect;
-const HashTable = require('../DataStructure/HashTable');
-const LinkedList = require('../DataStructure/LinkedList');
-const commonTest = require('./common.spec');
+import chai from 'chai';
+const should = chai.should();
+const expect = chai.expect;
+
+import HashTable from '../DataStructure/HashTable';
+import LinkedList from '../DataStructure/LinkedList';
+import commonTest from './common.spec';
 
 
 describe('DataStructure -- HashTable', () => {

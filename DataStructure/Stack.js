@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @name: Stack 
+ * @name: Stack
  * @order: LIFO --> Last In First Out
  */
 
@@ -17,10 +17,10 @@
  * @method: size --> Returns how many elements the stack contains.
  */
 
-function Stack(){
+export default function Stack(){
   //Private Property
   var items = [];
-  
+
   //Methods for manipulating stack
   this.push = function(item){
     items.push(item);
@@ -42,8 +42,4 @@ function Stack(){
   this.clear = function(){
     items = [];
   };
-};
-
-module.exports = function(){
-    return new Stack();
 };

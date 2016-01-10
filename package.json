@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "Datastructure && Algorithms written in JavaScript",
   "main": "index.js",
-  "dependencies": {
-    "chai": "^3.3.0"
-  },
   "devDependencies": {
     "babel": "^5.8.29",
     "chai": "^3.4.0",

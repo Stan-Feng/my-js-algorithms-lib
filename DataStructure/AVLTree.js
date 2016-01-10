@@ -90,4 +90,4 @@ AVLTree.prototype.checkHeight = function(){
 };
 
 
-module.exports = AVLTree;
+export default AVLTree;

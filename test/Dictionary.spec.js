@@ -1,8 +1,9 @@
 'use strict';
-import { expect } from 'chai';
-import { should } from 'chai';
-import Dictionary from '../DataStructure/Dictionary';
+import chai from 'chai';
+const expect = chai.expect;
+const should = chai.should();
 
+import Dictionary from '../DataStructure/Dictionary';
 import commonTest from './common.spec';
 
 describe('DataStructure -- Dictionary(Map): \n', () => {

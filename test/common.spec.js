@@ -1,4 +1,4 @@
-const chai = require('chai');
+import chai from 'chai';
 const should = chai.should();
 
 /**
@@ -42,4 +42,4 @@ var commonTest = (DataStructure, methods) => {
 };
 
 
-module.exports = commonTest;
+export default commonTest;

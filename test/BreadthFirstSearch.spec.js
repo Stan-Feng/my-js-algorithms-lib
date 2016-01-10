@@ -6,7 +6,7 @@ import breadthFirstSearch from '../Algorithms/BruteForce/BreadthFirstSearch';
 const should = chai.should();
 const expect = chai.expect;
 
-describe.only('BruteForce -- BreadthFirstSearch  \n', () => {
+describe('BruteForce -- BreadthFirstSearch  \n', () => {
   describe('BreadthFirstSearch -- Non-functional Tests: \n', () => {
     var graph = Graph.createInstance();
     it('It should import successfully. \n', () => {

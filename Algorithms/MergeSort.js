@@ -10,7 +10,7 @@
  * @type: Divider & Conquer
  */
 
-module.exports = (function (unsortedArr) {
+export default (function (unsortedArr) {
 	if (arguments.length !== 1 ||
 		!Array.isArray(unsortedArr)) return new Error("invalid parameters");
 	if (unsortedArr.length < 2) return unsortedArr; //Base Case

@@ -9,7 +9,7 @@
  * @method: values() --> return an array contains all items
  */
 
-function Set() {
+export default function Set() {
 	let _items = {};
 	let _size = 0;
 

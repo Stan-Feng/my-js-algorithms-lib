@@ -1,7 +1,7 @@
 'use strict';
-let LinkedList = require('./LinkedList');
+import LinkedList from './LinkedList';
 
-function Hash_table(hashFunc) {
+export default function Hash_table(hashFunc) {
   var _table = [];
   var _hashFunc = hashFunc || loseloseHashCode;
 
@@ -102,4 +102,3 @@ function Hash_table(hashFunc) {
   }
 }
 
-module.exports = Hash_table;

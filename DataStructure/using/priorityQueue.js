@@ -7,7 +7,7 @@
  * @method: {function} enqueue
  * @author: Stan Feng, Wed Oct 14 2015 19:04:05 GMT+0800 (CST)
  */
-function PriorityQueue(data) {
+export default function PriorityQueue(data) {
   var _elements = [];
   this._testElements = _elements; //Just for test, after test done comment it
 
@@ -64,9 +64,3 @@ function PriorityQueue(data) {
   //The rest part is the same as normal queue structure.....
 
 }
-
-
-
-module.exports = function (data) {
-	return new PriorityQueue(data);
-};
