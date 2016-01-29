@@ -3,39 +3,26 @@
  * a part of input array is sorted. It will insert the element to the appropriate position
  */
 
-export const InsertionSort = (function() {
+export const InsertionSort = (function () {
   var _arr;
 
-  return function InsertionSort(arr) {
-
-    if(arr.length === 1 || arr.length === 0) {
+  return function InsertionSort (arr) {
+    if (arr.length === 1 || arr.length === 0) {
       return arr;
     }
     _arr = arr;
 
-    //Assume the left-side is sorted
-    for (let electI = 0; electI < _arr.length - 1; electI++) {
-      for (let checkI = electI + 1; checkI < _arr.length; checkI++) {
+    // Assume the left-side is sorted
+    console.log('Passing Arr: ', _arr);
 
-        if(_arr[electI] > _arr[checkI]) {
-
-          //Insert _arr[electI] in front of _arr[checkI]
-          _insert(electI, checkI);
-        }
+    for (var i = 0; i < _arr.length; i++) {
+      let tmp = _arr[i];
+      for (var j = i - 1; j >= 0 && (_arr[j] > tmp); j--) {
+        _arr[j+1] = _arr[j];
       }
+      _arr[j+1] = tmp;
     }
 
     return _arr;
   };
-
-  function _insert(elementI, insertedI) {
-    const copyArr = _arr.slice(0);
-
-    _arr[insertedI-1] = copyArr[elementI+1];
-    for (let i = insertedI; i < _arr.length; i++) {
-      _arr[i] = copyArr[i-1];
-    }
-  }
-
 }());
-
