@@ -2,7 +2,7 @@ import chai from 'chai';
 import { InsertionSort } from '../Algorithms/DecreaseConquer/InsertionSort.js';
 const should = chai.should();
 
-describe.only('DecreaseConquer -- InsertionSort: \n', () => {
+describe('DecreaseConquer -- InsertionSort: \n', () => {
   describe('Nonfunctional Test Cases \n', () => {
     it('It should export correctly. \n', () => {
       InsertionSort.should.be.a('function');

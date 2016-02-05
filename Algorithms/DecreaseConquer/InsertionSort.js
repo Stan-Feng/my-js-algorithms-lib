@@ -4,25 +4,23 @@
  */
 
 export const InsertionSort = (function () {
-  var _arr;
-
   return function InsertionSort (arr) {
     if (arr.length === 1 || arr.length === 0) {
       return arr;
     }
-    _arr = arr;
 
     // Assume the left-side is sorted
-    console.log('Passing Arr: ', _arr);
+    for (let i = 0; i < arr.length; i++) {
+      let j = i - 1;
+      let tmp = arr[i];
 
-    for (var i = 0; i < _arr.length; i++) {
-      let tmp = _arr[i];
-      for (var j = i - 1; j >= 0 && (_arr[j] > tmp); j--) {
-        _arr[j+1] = _arr[j];
+      while (j >= 0 && (arr[j] > tmp)) {
+        arr[j + 1] = arr[j];
+        j -= 1;
       }
-      _arr[j+1] = tmp;
+      arr[j + 1] = tmp;
     }
 
-    return _arr;
+    return arr;
   };
 }());

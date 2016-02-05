@@ -9,42 +9,40 @@
  * @method: addVertice(v) --> Add new vertice to graph
  */
 //New Pattern of Creating Inheritance -- Prototype Style
-export default (function() {
-   return {
-     createInstance () {
-       var g = Object.create(this);
-       g.adjList = {};
-       g.vertices = [];
-       
-       return g;
-     },
+export default (function () {
+	return {
+		createInstance() {
+				var g = Object.create(this);
+				g.adjList = {};
+				g.vertices = [];
 
-     addEdge (e, v) {
-       this.adjList[e].push(v);
-       this.adjList[v].push(e);
-     },
+				return g;
+			},
 
-     addVertice (e) {
-       if(this.adjList[e]) {
-         return new Error('Vertices already exists');
-       }
-       else {
-         this.vertices.push(e);
-         this.adjList[e] = [];
-       }
-     },
+			addEdge(e, v) {
+				this.adjList[e].push(v);
+				this.adjList[v].push(e);
+			},
 
-     getAdjVertices (v) {
-       return this.adjList[v];
-     },
+			addVertice(e) {
+				if (this.adjList[e]) {
+					return new Error('Vertices already exists');
+				} else {
+					this.vertices.push(e);
+					this.adjList[e] = [];
+				}
+			},
 
-     getVertices () {
-       return this.vertices;
-     },
+			getAdjVertices(v) {
+				return this.adjList[v];
+			},
 
-     getAdjList () {
-       return this.adjList;
-     }
-   };
+			getVertices() {
+				return this.vertices;
+			},
+
+			getAdjList() {
+				return this.adjList;
+			}
+	};
 }());
-
