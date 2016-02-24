@@ -64,7 +64,15 @@ describe.only('DataStructure -- Directed Graph \n', () => {
     it('It should return a topological sorted list. \n', () => {
       graph = DirectedGraph.init(nodes);
       var list = graph.topologicalSort();
-      console.log(list);
+
+      list[0].should.equal('a');
+      list[1].should.equal('e');
+      list[2].should.equal('b');
+      list[3].should.equal('c');
+      list[4].should.equal('d');
+      list[5].should.equal('f');
+      list[6].should.equal('g');
+      list[7].should.equal('h');
     });
 
   });

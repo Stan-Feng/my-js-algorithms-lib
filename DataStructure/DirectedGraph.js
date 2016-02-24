@@ -18,6 +18,11 @@ const DirectedGraph = {
     return g;
   },
 
+  // Add edge from 'v' to 'w'
+  addEdge (v, w) {
+    adjList[v].push(w);
+  },
+
   deleteNode (label) {
     const index = this.vertices.indexOf(label);
     this.vertices.splice(index, 1);
@@ -25,9 +30,8 @@ const DirectedGraph = {
     delete this.adjList[label];
   },
 
-  // Add edge from 'v' to 'w'
-  addEdge (v, w) {
-    adjList[v].push(w);
+  isEmpty () {
+    return this.vertices.length === 0;
   },
 
   // If tarLabel === startLabel return false --> this graph is not Directed Acyclic Graph
@@ -69,47 +73,51 @@ const DirectedGraph = {
     if (!this.isDag(this.root)) {
       return new Error('Directed Acyclic Graph cannot use topological sort algorithm.');
     }
-    const orderedList = [];
-    const remainGraph = Object.create(this);
-    const remainAdjList = remainGraph.adjList;
-    const remainVertices = remainGraph.vertices;
 
-    // Check whether exists incoming edge from root node
-    for (let i = 0; i < remainVertices.length; i++) {
-      console.log(remainVertices);
-      const label = remainVertices[i];
-      // Find whether remaining node has edge to 'node'
-      for (let j = i + 1; j < remainVertices.length; j++) {
-        const remainLabel = remainVertices[j];
-        if (remainAdjList[remainLabel].to.indexOf(label) >= 0) {
-          // There exists edge coming in
-          break;
-        }
-      }
-      // No incoming edge, delete this node
-      console.log(`${label} has been removed from list...`);
-      i -= 1;
-      orderedList.push(label);
-      remainGraph.deleteNode(label);
+    const remainGraph = Object.create(this);
+
+    var orderedList = [];
+    var deletedEdges = _deleteEdges(remainGraph);
+
+    while (deletedEdges) {
+      orderedList = orderedList.concat(deletedEdges);
+      deletedEdges = _deleteEdges(remainGraph);
     }
 
     return orderedList;
-
-    // var list = {};
-    //
-    // for (let i = 0; i < vertices.length; i++) {
-    //   // Vertice Label
-    //   let label = vertices[i];
-    //   // Start Node
-    //   let node = adjList[label];
-    //   // For each node in adjList
-    //   for (let symbole in adjList) {
-    //     if (adjList.hasOwnProperty(symbole)) {
-    //       // console.log(symbole);
-    //     }
-    //   }
-    // }
   }
 };
+
+// ********************* Helper Functions ******************
+
+function _deleteEdges (remainGraph) {
+  if (remainGraph.vertices.length === 0) {
+    return false;
+  }
+
+  const remainNodes = remainGraph.adjList;
+  const remainVertices = remainGraph.vertices;
+
+  // After this for-in, copyVertices just contains ready delete symbol
+  const copyVertices = remainVertices.slice(0);
+  for (let symbol in remainNodes) {
+    remainNodes[symbol].to.forEach(dest => {
+      let index = copyVertices.indexOf(dest);
+      if (index > 0) {
+        copyVertices.splice(index, 1);
+      }
+    });
+  }
+
+  // Delete Edges
+  copyVertices.forEach(symbol => {
+    delete remainGraph.adjList[symbol];
+  });
+  remainGraph.vertices = remainVertices.filter(symbol => {
+    return copyVertices.indexOf(symbol) < 0;
+  });
+
+  return copyVertices;
+}
 
 export { DirectedGraph };
